@@ -2,7 +2,7 @@
 
 Official website for **Blue-Ray (SL) Ltd.** — an indigenous Sierra Leonean construction, mining and engineering company.
 
-🌍 **Live:** https://blueraysl.com
+🌍 **Live:** https://blueraysl.com(for now we use this: https://blueraysl.vercel.app/)
 
 ## Stack
 
