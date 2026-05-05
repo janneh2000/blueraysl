@@ -115,24 +115,61 @@
     }
   }
 
-  // Form: just a friendly fake-handler (mailto fallback)
+  // Contact form → Supabase (with mailto fallback if Supabase fails)
   const form = document.querySelector('.contact-form');
   if (form) {
-    form.addEventListener('submit', (e) => {
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalLabel = submitBtn ? submitBtn.innerHTML : '';
+
+    const sb = (window.supabase && window.BLUERAY_CONFIG)
+      ? window.supabase.createClient(
+          window.BLUERAY_CONFIG.SUPABASE_URL,
+          window.BLUERAY_CONFIG.SUPABASE_ANON_KEY
+        )
+      : null;
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const data = new FormData(form);
-      const subject = encodeURIComponent(
-        'Website Inquiry — ' + (data.get('service') || 'General')
-      );
-      const body = encodeURIComponent(
-        'Name: ' + (data.get('name') || '') +
-          '\nEmail: ' + (data.get('email') || '') +
-          '\nPhone: ' + (data.get('phone') || '') +
-          '\nService: ' + (data.get('service') || '') +
-          '\n\nMessage:\n' + (data.get('message') || '')
-      );
-      window.location.href =
-        'mailto:info@blueraysl.com?subject=' + subject + '&body=' + body;
+      const payload = {
+        name: (data.get('name') || '').trim(),
+        email: (data.get('email') || '').trim(),
+        phone: (data.get('phone') || '').trim() || null,
+        service: (data.get('service') || '').trim() || null,
+        message: (data.get('message') || '').trim(),
+        user_agent: navigator.userAgent
+      };
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Sending…';
+      }
+
+      try {
+        if (!sb) throw new Error('Supabase not configured');
+        const { error } = await sb.from('contact_submissions').insert(payload);
+        if (error) throw error;
+        form.innerHTML = `
+          <h3 style="margin-bottom:14px;">Thank you — message received.</h3>
+          <p class="muted">We've got your details and will reply within one business day.</p>
+        `;
+      } catch (err) {
+        console.error('Submission failed, falling back to mailto:', err);
+        // Fallback: open mail app pre-filled, so the user is never stranded
+        const subject = encodeURIComponent('Website Inquiry — ' + (payload.service || 'General'));
+        const body = encodeURIComponent(
+          'Name: ' + payload.name +
+          '\nEmail: ' + payload.email +
+          '\nPhone: ' + (payload.phone || '') +
+          '\nService: ' + (payload.service || '') +
+          '\n\nMessage:\n' + payload.message
+        );
+        window.location.href = 'mailto:info@blueraysl.com?subject=' + subject + '&body=' + body;
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalLabel;
+        }
+      }
     });
   }
 })();
