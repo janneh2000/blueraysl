@@ -29,6 +29,7 @@
         <li><a href="about.html">About</a></li>
         <li><a href="services.html" class="active">Services</a></li>
         <li><a href="projects.html">Projects</a></li>
+        <li><a href="news.html">News</a></li>
         <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
       </ul>
     </div>
@@ -523,6 +524,7 @@
             <li><a href="about.html">About Us</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="projects.html">Projects</a></li>
+            <li><a href="news.html">News</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
@@ -537,9 +539,9 @@
         </div>
         <div>
           <h5>Get In Touch</h5>
-          <div class="footer-contact-row"><span>📍</span><span>5 Fort Street State Avenue, Freetown, Sierra Leone</span></div>
-          <div class="footer-contact-row"><span>📞</span><span>+232-78-746182 / +232-88-746182</span></div>
-          <div class="footer-contact-row"><span>✉</span><span><a href="mailto:info@blueraysl.com">info@blueraysl.com</a></span></div>
+          <div class="footer-contact-row"><span>📍</span><span><span data-setting="address_line1">5 Fort Street State Avenue</span>, <span data-setting="address_line2">Freetown, Sierra Leone</span></span></div>
+          <div class="footer-contact-row"><span>📞</span><span><span data-setting="phone_primary">+232-78-746182</span> / <span data-setting="phone_secondary">+232-88-746182</span></span></div>
+          <div class="footer-contact-row"><span>✉</span><span><a href="mailto:info@blueraysl.com"><span data-setting="email_primary">info@blueraysl.com</span></a></span></div>
         </div>
       </div>
       <div class="footer-bottom">
@@ -550,6 +552,9 @@
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/site-dynamic.js"></script>
 </body>
 </html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News — Blue-Ray Admin</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" type="image/png" href="../images/logo-small.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body" data-page="news">
+
+  <div class="admin-shell">
+    <div data-sidebar></div>
+
+    <main class="admin-main">
+      <div class="admin-page-head">
+        <div>
+          <button class="admin-burger" data-action="burger">☰</button>
+          <h1>News &amp; Announcements</h1>
+          <p>Publish company news that appears on /news.html.</p>
+        </div>
+        <div class="btn-row">
+          <button class="btn-primary-sm" id="btn-new">+ New post</button>
+        </div>
+      </div>
+
+      <div class="search-bar">
+        <input id="search" type="search" placeholder="Search posts…">
+        <select id="filter-status">
+          <option value="all">All</option>
+          <option value="published">Published</option>
+          <option value="draft">Draft</option>
+        </select>
+      </div>
+
+      <div id="list">Loading…</div>
+    </main>
+  </div>
+
+  <div class="drawer" id="drawer">
+    <div class="drawer-panel" id="drawer-panel"></div>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    renderSidebar('news');
+    const sb = window.adminSb;
+    let posts = [];
+
+    async function load() {
+      const { data, error } = await sb.from('news_posts')
+        .select('*').order('published_at', { ascending: false, nullsFirst: false }).order('created_at', { ascending: false });
+      if (error) { document.getElementById('list').innerHTML = `<p class="muted">Error: ${escHtml(error.message)}</p>`; return; }
+      posts = data || [];
+      render();
+    }
+
+    function render() {
+      const q = document.getElementById('search').value.trim().toLowerCase();
+      const s = document.getElementById('filter-status').value;
+      const filtered = posts.filter(p => {
+        if (s !== 'all' && p.status !== s) return false;
+        if (q && !`${p.title} ${p.excerpt} ${p.body}`.toLowerCase().includes(q)) return false;
+        return true;
+      });
+      const c = document.getElementById('list');
+      if (filtered.length === 0) {
+        c.innerHTML = '<div class="empty"><div class="icon">📰</div><p>No news posts yet. Click <strong>+ New post</strong> to publish your first.</p></div>';
+        return;
+      }
+      c.innerHTML = `
+        <div class="adm-list">
+          <div class="adm-list-row head">
+            <div>Title</div><div>Excerpt</div><div>Published</div><div>Status</div><div></div>
+          </div>
+          ${filtered.map(p => `
+            <div class="adm-list-row">
+              <div class="cell-name">
+                <strong>${escHtml(p.title)}</strong>
+                <span>${escHtml('/news.html?slug=' + p.slug)}</span>
+              </div>
+              <div>${escHtml((p.excerpt || '').slice(0, 80))}</div>
+              <div>${p.published_at ? fmtDate(p.published_at) : '—'}</div>
+              <div><span class="badge badge-${p.status}">${escHtml(p.status)}</span></div>
+              <div class="cell-actions">
+                <button class="btn-ghost-sm" data-edit="${p.id}">Edit</button>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    document.getElementById('search').addEventListener('input', render);
+    document.getElementById('filter-status').addEventListener('change', render);
+    document.getElementById('btn-new').addEventListener('click', () => openEditor(null));
+
+    document.addEventListener('click', (e) => {
+      if (e.target.dataset.edit) openEditor(e.target.dataset.edit);
+      if (e.target.matches('[data-action="close-drawer"]') || e.target.id === 'drawer') closeDrawer();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
+
+    function openEditor(id) {
+      const p = id ? posts.find(x => x.id === id) : {
+        id: null, slug: '', title: '', excerpt: '', body: '',
+        image_url: '', status: 'draft', published_at: null
+      };
+      if (!p) return;
+
+      document.getElementById('drawer-panel').innerHTML = `
+        <button class="drawer-close" data-action="close-drawer">← Back to list</button>
+        <h2 style="margin-bottom:18px;">${id ? 'Edit post' : 'New post'}</h2>
+        <form id="news-form">
+          <input type="hidden" name="id" value="${escHtml(p.id || '')}">
+
+          <div class="adm-form-group">
+            <label>Title *</label>
+            <input name="title" id="f-title" required value="${escHtml(p.title)}">
+          </div>
+
+          <div class="adm-form-group">
+            <label>URL slug *</label>
+            <input name="slug" id="f-slug" required value="${escHtml(p.slug)}" placeholder="e.g. new-office-monrovia">
+          </div>
+
+          <div class="adm-form-group">
+            <label>Cover image</label>
+            <div class="upload-zone" id="upload-zone">
+              <div id="upload-status">
+                ${p.image_url
+                  ? `<img class="upload-preview" src="${escHtml(p.image_url)}">`
+                  : '<div>📤 Click or drag an image here (optional)</div>'
+                }
+              </div>
+              <input id="upload-file" type="file" accept="image/*" hidden>
+            </div>
+            <input type="hidden" name="image_url" id="image_url" value="${escHtml(p.image_url || '')}">
+          </div>
+
+          <div class="adm-form-group">
+            <label>Excerpt — short summary shown on /news.html</label>
+            <textarea name="excerpt" rows="2">${escHtml(p.excerpt || '')}</textarea>
+          </div>
+
+          <div class="adm-form-group">
+            <label>Body — full article (plain text — paragraphs will keep line breaks)</label>
+            <textarea name="body" rows="10">${escHtml(p.body || '')}</textarea>
+          </div>
+
+          <div class="adm-form-row">
+            <div class="adm-form-group">
+              <label>Status</label>
+              <select name="status">
+                <option value="draft" ${p.status==='draft'?'selected':''}>Draft</option>
+                <option value="published" ${p.status==='published'?'selected':''}>Published</option>
+              </select>
+            </div>
+            <div class="adm-form-group">
+              <label>Publish date (only set when publishing)</label>
+              <input name="published_at" type="datetime-local" value="${p.published_at ? new Date(p.published_at).toISOString().slice(0,16) : ''}">
+            </div>
+          </div>
+
+          <div class="btn-row" style="margin-top:18px;">
+            <button type="submit" class="btn-primary-sm">💾 Save</button>
+            ${id ? `<button type="button" class="btn-ghost-sm btn-danger-sm" data-delete="${escHtml(p.id)}">Delete</button>` : ''}
+            <button type="button" class="btn-ghost-sm" data-action="close-drawer">Cancel</button>
+          </div>
+        </form>
+      `;
+      document.getElementById('drawer').classList.add('open');
+      attachUpload();
+
+      // Auto-fill slug from title (only when creating new)
+      if (!id) {
+        document.getElementById('f-title').addEventListener('input', (e) => {
+          document.getElementById('f-slug').value = slugify(e.target.value);
+        });
+      }
+    }
+    function closeDrawer() { document.getElementById('drawer').classList.remove('open'); }
+
+    function attachUpload() {
+      const zone = document.getElementById('upload-zone');
+      const file = document.getElementById('upload-file');
+      const url  = document.getElementById('image_url');
+      const stat = document.getElementById('upload-status');
+      zone.onclick = () => file.click();
+      zone.ondragover = (e) => { e.preventDefault(); zone.classList.add('dragover'); };
+      zone.ondragleave = () => zone.classList.remove('dragover');
+      zone.ondrop = (e) => { e.preventDefault(); zone.classList.remove('dragover'); if (e.dataTransfer.files[0]) handleUpload(e.dataTransfer.files[0]); };
+      file.onchange = () => { if (file.files[0]) handleUpload(file.files[0]); };
+      async function handleUpload(f) {
+        if (!f.type.startsWith('image/')) return toast('Only image files', 'error');
+        if (f.size > 5 * 1024 * 1024) return toast('Max 5 MB per image', 'error');
+        stat.innerHTML = '<div>Uploading…</div>';
+        const ext = (f.name.split('.').pop() || 'jpg').toLowerCase();
+        const path = `news/${Date.now()}-${Math.random().toString(36).slice(2,8)}.${ext}`;
+        const { error } = await sb.storage.from('site-images').upload(path, f, { upsert: false, contentType: f.type });
+        if (error) { stat.innerHTML = '<div>📤 Click or drag an image here</div>'; return toast(error.message, 'error'); }
+        const { data: pub } = sb.storage.from('site-images').getPublicUrl(path);
+        url.value = pub.publicUrl;
+        stat.innerHTML = `<img class="upload-preview" src="${pub.publicUrl}">`;
+        toast('Image uploaded');
+      }
+    }
+
+    document.addEventListener('submit', async (e) => {
+      if (e.target.id !== 'news-form') return;
+      e.preventDefault();
+      const f = e.target;
+      const id = f.id.value || null;
+      const status = f.status.value;
+      let publishedAt = f.published_at.value ? new Date(f.published_at.value).toISOString() : null;
+      // Auto-set publish date when publishing
+      if (status === 'published' && !publishedAt) publishedAt = new Date().toISOString();
+      const payload = {
+        title: f.title.value.trim(),
+        slug:  f.slug.value.trim() || slugify(f.title.value),
+        excerpt: f.excerpt.value.trim() || null,
+        body: f.body.value || null,
+        image_url: f.image_url.value || null,
+        status,
+        published_at: publishedAt
+      };
+      if (!payload.title || !payload.slug) return toast('Title and slug are required', 'error');
+      const sbq = id
+        ? sb.from('news_posts').update(payload).eq('id', id)
+        : sb.from('news_posts').insert(payload);
+      const { error } = await sbq;
+      if (error) return toast(error.message, 'error');
+      toast(id ? 'Post saved' : 'Post created');
+      closeDrawer();
+      await load();
+    });
+
+    document.addEventListener('click', async (e) => {
+      const id = e.target.dataset.delete;
+      if (!id || e.target.closest('#news-form') === null) return;
+      if (!confirm('Delete this post permanently?')) return;
+      const { error } = await sb.from('news_posts').delete().eq('id', id);
+      if (error) return toast(error.message, 'error');
+      toast('Deleted');
+      closeDrawer();
+      await load();
+    });
+
+    load();
+  </script>
+</body>
+</html>

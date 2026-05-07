@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Blue-Ray Admin</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" type="image/png" href="../images/logo-small.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body" data-page="dashboard">
+
+  <div class="admin-shell">
+    <div data-sidebar></div>
+
+    <main class="admin-main">
+      <div class="admin-page-head">
+        <div>
+          <button class="admin-burger" data-action="burger">☰</button>
+          <h1>Dashboard</h1>
+          <p>What's happening with blueraysl.com today.</p>
+        </div>
+      </div>
+
+      <div class="stats-row" id="tiles">
+        <div class="stat-tile">
+          <div class="stat-tile-label">New submissions</div>
+          <div class="stat-tile-value accent" id="t-new">—</div>
+        </div>
+        <div class="stat-tile">
+          <div class="stat-tile-label">Total submissions</div>
+          <div class="stat-tile-value" id="t-total">—</div>
+        </div>
+        <div class="stat-tile">
+          <div class="stat-tile-label">Published projects</div>
+          <div class="stat-tile-value" id="t-projects">—</div>
+        </div>
+        <div class="stat-tile">
+          <div class="stat-tile-label">Published news</div>
+          <div class="stat-tile-value" id="t-news">—</div>
+        </div>
+      </div>
+
+      <div class="admin-card">
+        <h2 style="margin-bottom:8px;">Recent submissions</h2>
+        <p class="muted" style="font-size:0.9rem; margin-bottom:18px;">The five most recent enquiries.</p>
+        <div id="recent-submissions">Loading…</div>
+        <div style="margin-top:18px;">
+          <a href="submissions.html" class="btn-ghost-sm">Open inbox →</a>
+        </div>
+      </div>
+
+      <div class="admin-card">
+        <h2 style="margin-bottom:8px;">Quick actions</h2>
+        <div class="btn-row" style="margin-top:14px;">
+          <a href="settings.html" class="btn-ghost-sm">⚙️ Edit site settings</a>
+          <a href="projects.html" class="btn-primary-sm">+ Add a project</a>
+          <a href="news.html" class="btn-ghost-sm">📰 Write news post</a>
+          <a href="../index.html" target="_blank" class="btn-ghost-sm">🌍 View public site</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    renderSidebar('dashboard');
+
+    const sb = window.adminSb;
+
+    async function loadTiles() {
+      try {
+        const [newCount, totalCount, projCount, newsCount] = await Promise.all([
+          sb.from('contact_submissions').select('*', { count: 'exact', head: true }).eq('status','new'),
+          sb.from('contact_submissions').select('*', { count: 'exact', head: true }),
+          sb.from('projects').select('*', { count: 'exact', head: true }).eq('status','published'),
+          sb.from('news_posts').select('*', { count: 'exact', head: true }).eq('status','published'),
+        ]);
+        document.getElementById('t-new').textContent      = newCount.count ?? 0;
+        document.getElementById('t-total').textContent    = totalCount.count ?? 0;
+        document.getElementById('t-projects').textContent = projCount.count ?? 0;
+        document.getElementById('t-news').textContent     = newsCount.count ?? 0;
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    async function loadRecent() {
+      const { data, error } = await sb.from('contact_submissions')
+        .select('id,name,email,service,created_at,status,message')
+        .order('created_at', { ascending: false })
+        .limit(5);
+      const c = document.getElementById('recent-submissions');
+      if (error) { c.innerHTML = `<p class="muted">Error: ${escHtml(error.message)}</p>`; return; }
+      if (!data || data.length === 0) {
+        c.innerHTML = '<div class="empty"><div class="icon">📭</div><p>No submissions yet.</p></div>';
+        return;
+      }
+      c.innerHTML = `
+        <div class="adm-list">
+          <div class="adm-list-row head">
+            <div>Name</div><div>Email</div><div>Service</div><div>Status</div><div></div>
+          </div>
+          ${data.map(r => `
+            <div class="adm-list-row">
+              <div class="cell-name">
+                <strong>${escHtml(r.name)}</strong>
+                <span>${fmtDate(r.created_at)}</span>
+              </div>
+              <div>${escHtml(r.email)}</div>
+              <div>${escHtml(r.service || '—')}</div>
+              <div><span class="badge badge-${r.status}">${escHtml(r.status)}</span></div>
+              <div class="cell-actions">
+                <a href="submissions.html?id=${encodeURIComponent(r.id)}" class="btn-ghost-sm">Open</a>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    loadTiles();
+    loadRecent();
+  </script>
+</body>
+</html>

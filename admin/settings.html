@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings — Blue-Ray Admin</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" type="image/png" href="../images/logo-small.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body" data-page="settings">
+
+  <div class="admin-shell">
+    <div data-sidebar></div>
+
+    <main class="admin-main">
+      <div class="admin-page-head">
+        <div>
+          <button class="admin-burger" data-action="burger">☰</button>
+          <h1>Site settings</h1>
+          <p>Edit phone numbers, address, hours, headline and stats. Changes are live within seconds.</p>
+        </div>
+      </div>
+
+      <form id="settings-form">
+        <div id="groups">Loading…</div>
+        <div class="btn-row" style="margin-top: 24px;">
+          <button type="submit" class="btn-primary-sm">💾 Save changes</button>
+          <a href="../index.html" target="_blank" class="btn-ghost-sm">View site</a>
+        </div>
+      </form>
+    </main>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    renderSidebar('settings');
+    const sb = window.adminSb;
+
+    const GROUP_LABELS = {
+      contact: 'Contact details',
+      stats:   'Home page statistics',
+      hero:    'Home page hero',
+      general: 'General'
+    };
+
+    let settings = [];
+
+    async function load() {
+      const { data, error } = await sb.from('site_settings')
+        .select('*').order('group_name').order('sort_order');
+      if (error) {
+        document.getElementById('groups').innerHTML = `<p class="muted">Error: ${escHtml(error.message)}</p>`;
+        return;
+      }
+      settings = data || [];
+      render();
+    }
+
+    function render() {
+      const groups = {};
+      settings.forEach(s => {
+        groups[s.group_name] = groups[s.group_name] || [];
+        groups[s.group_name].push(s);
+      });
+
+      document.getElementById('groups').innerHTML = Object.keys(groups).map(g => `
+        <div class="admin-card">
+          <h2 style="margin-bottom:14px;">${escHtml(GROUP_LABELS[g] || g)}</h2>
+          ${groups[g].map(s => `
+            <div class="adm-form-group">
+              <label for="set-${escHtml(s.key)}">${escHtml(s.label)}</label>
+              ${s.type === 'textarea'
+                ? `<textarea id="set-${escHtml(s.key)}" data-key="${escHtml(s.key)}" rows="4">${escHtml(s.value || '')}</textarea>`
+                : `<input id="set-${escHtml(s.key)}" data-key="${escHtml(s.key)}" type="${s.type === 'number' ? 'number' : 'text'}" value="${escHtml(s.value || '')}">`
+              }
+            </div>
+          `).join('')}
+        </div>
+      `).join('');
+    }
+
+    document.getElementById('settings-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const inputs = document.querySelectorAll('[data-key]');
+      const updates = [];
+      inputs.forEach(el => {
+        const key = el.dataset.key;
+        const original = settings.find(s => s.key === key);
+        if (original && original.value !== el.value) {
+          updates.push({ key, value: el.value });
+        }
+      });
+
+      if (updates.length === 0) return toast('No changes to save', 'error');
+
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Saving…';
+
+      let errors = [];
+      for (const u of updates) {
+        const { error } = await sb.from('site_settings')
+          .update({ value: u.value })
+          .eq('key', u.key);
+        if (error) errors.push(`${u.key}: ${error.message}`);
+      }
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = '💾 Save changes';
+
+      if (errors.length > 0) {
+        toast('Some settings failed: ' + errors[0], 'error');
+      } else {
+        toast(`Saved ${updates.length} change${updates.length===1?'':'s'}`);
+        await load();
+      }
+    });
+
+    load();
+  </script>
+</body>
+</html>

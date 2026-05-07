@@ -38,6 +38,7 @@
         <li><a href="about.html">About</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="projects.html">Projects</a></li>
+        <li><a href="news.html">News</a></li>
         <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
       </ul>
     </div>
@@ -71,19 +72,19 @@
     <div class="container">
       <div class="stats-grid">
         <div class="stat">
-          <div class="stat-num"><span data-count="9">0</span>+</div>
+          <div class="stat-num"><span data-count="9" data-setting-count="stat_years">0</span>+</div>
           <div class="stat-label">Years In Operation</div>
         </div>
         <div class="stat">
-          <div class="stat-num"><span data-count="25">0</span>+</div>
+          <div class="stat-num"><span data-count="25" data-setting-count="stat_projects">0</span>+</div>
           <div class="stat-label">Projects Delivered</div>
         </div>
         <div class="stat">
-          <div class="stat-num"><span data-count="6">0</span></div>
+          <div class="stat-num"><span data-count="6" data-setting-count="stat_markets">0</span></div>
           <div class="stat-label">West African Markets</div>
         </div>
         <div class="stat">
-          <div class="stat-num"><span data-count="6">0</span>+</div>
+          <div class="stat-num"><span data-count="6" data-setting-count="stat_clients">0</span>+</div>
           <div class="stat-label">Government Clients</div>
         </div>
       </div>
@@ -408,6 +409,7 @@
             <li><a href="about.html">About Us</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="projects.html">Projects</a></li>
+            <li><a href="news.html">News</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
@@ -444,6 +446,9 @@
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/site-dynamic.js"></script>
 </body>
 </html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Blue-Ray Admin</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" type="image/png" href="../images/logo-small.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body" data-page="projects">
+
+  <div class="admin-shell">
+    <div data-sidebar></div>
+
+    <main class="admin-main">
+      <div class="admin-page-head">
+        <div>
+          <button class="admin-burger" data-action="burger">☰</button>
+          <h1>Projects</h1>
+          <p>Manage the projects gallery on the public site.</p>
+        </div>
+        <div class="btn-row">
+          <button class="btn-primary-sm" id="btn-new">+ New project</button>
+        </div>
+      </div>
+
+      <div class="search-bar">
+        <input id="search" type="search" placeholder="Search projects…">
+        <select id="filter-status">
+          <option value="all">All</option>
+          <option value="published">Published</option>
+          <option value="draft">Draft</option>
+        </select>
+        <select id="filter-cat">
+          <option value="all">All categories</option>
+          <option value="roads">Roads</option>
+          <option value="bridges">Bridges</option>
+          <option value="buildings">Buildings</option>
+          <option value="industrial">Industrial</option>
+          <option value="mining">Mining</option>
+        </select>
+      </div>
+
+      <div id="list">Loading…</div>
+    </main>
+  </div>
+
+  <!-- Project editor drawer -->
+  <div class="drawer" id="drawer">
+    <div class="drawer-panel" id="drawer-panel"></div>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    renderSidebar('projects');
+    const sb = window.adminSb;
+
+    let projects = [];
+
+    async function load() {
+      const { data, error } = await sb.from('projects')
+        .select('*').order('sort_order').order('created_at', { ascending: false });
+      if (error) { document.getElementById('list').innerHTML = `<p class="muted">Error: ${escHtml(error.message)}</p>`; return; }
+      projects = data || [];
+      render();
+    }
+
+    function render() {
+      const q = document.getElementById('search').value.trim().toLowerCase();
+      const s = document.getElementById('filter-status').value;
+      const c = document.getElementById('filter-cat').value;
+      const filtered = projects.filter(p => {
+        if (s !== 'all' && p.status !== s) return false;
+        if (c !== 'all' && p.category !== c) return false;
+        if (q && !`${p.title} ${p.caption}`.toLowerCase().includes(q)) return false;
+        return true;
+      });
+      const list = document.getElementById('list');
+      if (filtered.length === 0) {
+        list.innerHTML = '<div class="empty"><div class="icon">🏗</div><p>No projects yet. Click <strong>+ New project</strong> to add one.</p></div>';
+        return;
+      }
+      list.innerHTML = `
+        <div class="adm-list">
+          <div class="adm-list-row head">
+            <div>Title</div><div>Category</div><div>Status</div><div>Featured</div><div></div>
+          </div>
+          ${filtered.map(p => `
+            <div class="adm-list-row">
+              <div class="cell-name" style="display:flex; gap:10px; align-items:center;">
+                ${p.image_url ? `<img src="${escHtml(p.image_url)}" style="width:50px; height:50px; object-fit:cover; border-radius:4px; flex-shrink:0;">` : ''}
+                <div>
+                  <strong>${escHtml(p.title)}</strong>
+                  <span>${escHtml(p.caption || '')}</span>
+                </div>
+              </div>
+              <div>${escHtml(p.category)}</div>
+              <div><span class="badge badge-${p.status}">${escHtml(p.status)}</span></div>
+              <div>${p.featured ? '⭐' : '—'}</div>
+              <div class="cell-actions">
+                <button class="btn-ghost-sm" data-edit="${p.id}">Edit</button>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    document.getElementById('search').addEventListener('input', render);
+    document.getElementById('filter-status').addEventListener('change', render);
+    document.getElementById('filter-cat').addEventListener('change', render);
+    document.getElementById('btn-new').addEventListener('click', () => openEditor(null));
+
+    document.addEventListener('click', (e) => {
+      if (e.target.dataset.edit) openEditor(e.target.dataset.edit);
+      if (e.target.matches('[data-action="close-drawer"]') || e.target.id === 'drawer') closeDrawer();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
+
+    function openEditor(id) {
+      const p = id ? projects.find(x => x.id === id) : {
+        id: null, title: '', caption: '', category: 'roads',
+        image_url: '', featured: false, status: 'published', sort_order: 100
+      };
+      if (!p) return;
+
+      document.getElementById('drawer-panel').innerHTML = `
+        <button class="drawer-close" data-action="close-drawer">← Back to list</button>
+        <h2 style="margin-bottom:18px;">${id ? 'Edit project' : 'New project'}</h2>
+        <form id="proj-form">
+          <input type="hidden" name="id" value="${escHtml(p.id || '')}">
+
+          <div class="adm-form-group">
+            <label>Title *</label>
+            <input name="title" required value="${escHtml(p.title)}" placeholder="e.g. 24-Metre Bridge — Bendu Junction">
+          </div>
+
+          <div class="adm-form-group">
+            <label>Caption</label>
+            <textarea name="caption" rows="2" placeholder="Short description shown under the title">${escHtml(p.caption || '')}</textarea>
+          </div>
+
+          <div class="adm-form-row">
+            <div class="adm-form-group">
+              <label>Category *</label>
+              <select name="category" required>
+                ${['roads','bridges','buildings','industrial','mining'].map(c =>
+                  `<option value="${c}" ${c===p.category?'selected':''}>${c}</option>`).join('')}
+              </select>
+            </div>
+            <div class="adm-form-group">
+              <label>Status</label>
+              <select name="status">
+                <option value="published" ${p.status==='published'?'selected':''}>Published</option>
+                <option value="draft" ${p.status==='draft'?'selected':''}>Draft</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="adm-form-row">
+            <div class="adm-form-group">
+              <label>Featured (large card)</label>
+              <select name="featured">
+                <option value="false" ${!p.featured?'selected':''}>No</option>
+                <option value="true"  ${ p.featured?'selected':''}>Yes</option>
+              </select>
+            </div>
+            <div class="adm-form-group">
+              <label>Sort order</label>
+              <input name="sort_order" type="number" value="${escHtml(p.sort_order)}">
+            </div>
+          </div>
+
+          <div class="adm-form-group">
+            <label>Project photo *</label>
+            <div class="upload-zone" id="upload-zone">
+              <div id="upload-status">
+                ${p.image_url
+                  ? `<img class="upload-preview" src="${escHtml(p.image_url)}">`
+                  : '<div>📤 Click or drag an image here</div>'
+                }
+              </div>
+              <input id="upload-file" type="file" accept="image/*" hidden>
+            </div>
+            <input type="hidden" name="image_url" id="image_url" value="${escHtml(p.image_url || '')}">
+          </div>
+
+          <div class="btn-row" style="margin-top:18px;">
+            <button type="submit" class="btn-primary-sm">💾 Save</button>
+            ${id ? `<button type="button" class="btn-ghost-sm btn-danger-sm" data-delete="${escHtml(p.id)}">Delete</button>` : ''}
+            <button type="button" class="btn-ghost-sm" data-action="close-drawer">Cancel</button>
+          </div>
+        </form>
+      `;
+      document.getElementById('drawer').classList.add('open');
+      attachUpload();
+    }
+    function closeDrawer() { document.getElementById('drawer').classList.remove('open'); }
+
+    function attachUpload() {
+      const zone = document.getElementById('upload-zone');
+      const file = document.getElementById('upload-file');
+      const url  = document.getElementById('image_url');
+      const stat = document.getElementById('upload-status');
+
+      zone.onclick = () => file.click();
+      zone.ondragover = (e) => { e.preventDefault(); zone.classList.add('dragover'); };
+      zone.ondragleave = () => zone.classList.remove('dragover');
+      zone.ondrop = (e) => {
+        e.preventDefault();
+        zone.classList.remove('dragover');
+        if (e.dataTransfer.files[0]) handleUpload(e.dataTransfer.files[0]);
+      };
+      file.onchange = () => { if (file.files[0]) handleUpload(file.files[0]); };
+
+      async function handleUpload(f) {
+        if (!f.type.startsWith('image/')) return toast('Only image files', 'error');
+        if (f.size > 5 * 1024 * 1024) return toast('Max 5 MB per image', 'error');
+
+        stat.innerHTML = '<div>Uploading…</div>';
+        const ext = (f.name.split('.').pop() || 'jpg').toLowerCase();
+        const path = `projects/${Date.now()}-${Math.random().toString(36).slice(2,8)}.${ext}`;
+        const { error } = await sb.storage.from('site-images').upload(path, f, { upsert: false, contentType: f.type });
+        if (error) { stat.innerHTML = '<div>📤 Click or drag an image here</div>'; return toast(error.message, 'error'); }
+        const { data: pub } = sb.storage.from('site-images').getPublicUrl(path);
+        url.value = pub.publicUrl;
+        stat.innerHTML = `<img class="upload-preview" src="${pub.publicUrl}">`;
+        toast('Image uploaded');
+      }
+    }
+
+    document.addEventListener('submit', async (e) => {
+      if (e.target.id !== 'proj-form') return;
+      e.preventDefault();
+      const f = e.target;
+      const id = f.id.value || null;
+      const payload = {
+        title: f.title.value.trim(),
+        caption: f.caption.value.trim() || null,
+        category: f.category.value,
+        status: f.status.value,
+        featured: f.featured.value === 'true',
+        sort_order: parseInt(f.sort_order.value, 10) || 100,
+        image_url: f.image_url.value
+      };
+      if (!payload.title || !payload.image_url) return toast('Title and image are required', 'error');
+
+      const sbq = id
+        ? sb.from('projects').update(payload).eq('id', id)
+        : sb.from('projects').insert(payload);
+      const { error } = await sbq;
+      if (error) return toast(error.message, 'error');
+      toast(id ? 'Project updated' : 'Project created');
+      closeDrawer();
+      await load();
+    });
+
+    document.addEventListener('click', async (e) => {
+      const id = e.target.dataset.delete;
+      if (!id || e.target.closest('#proj-form') === null) return;
+      if (!confirm('Delete this project? This cannot be undone.')) return;
+      const { error } = await sb.from('projects').delete().eq('id', id);
+      if (error) return toast(error.message, 'error');
+      toast('Deleted');
+      closeDrawer();
+      await load();
+    });
+
+    load();
+  </script>
+</body>
+</html>

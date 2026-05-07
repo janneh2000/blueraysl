@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>document.documentElement.classList.add("js");</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News Post — Blue-Ray Mining &amp; Construction Co. (SL) Ltd.</title>
+  <meta name="theme-color" content="#0a0e1a">
+
+  <link rel="icon" type="image/png" href="images/logo-small.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <img src="images/logo-small.png" alt="Blue-Ray Logo">
+        <div class="nav-brand-text">Blue-Ray<span>Mining &amp; Construction</span></div>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="news.html" class="active">News</a></li>
+        <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="section" style="padding-top: 130px;">
+    <div class="container" style="max-width: 800px;">
+      <p style="margin-bottom: 30px;"><a href="news.html" style="color: var(--text-muted);">← Back to all news</a></p>
+      <div data-news-post>
+        <p class="muted">Loading…</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-small.png" alt="Blue-Ray">
+          <p>An indigenous Sierra Leonean construction, mining and engineering company committed to building infrastructure that lasts.</p>
+        </div>
+        <div>
+          <h5>Company</h5>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Services</h5>
+          <ul>
+            <li><a href="services.html#construction">Construction</a></li>
+            <li><a href="services.html#mining">Mining</a></li>
+            <li><a href="services.html#surveys">Surveys</a></li>
+            <li><a href="services.html#supplies">Supplies</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Get In Touch</h5>
+          <div class="footer-contact-row"><span>📍</span><span><span data-setting="address_line1">5 Fort Street State Avenue</span>, <span data-setting="address_line2">Freetown, Sierra Leone</span></span></div>
+          <div class="footer-contact-row"><span>📞</span><span><span data-setting="phone_primary">+232-78-746182</span> / <span data-setting="phone_secondary">+232-88-746182</span></span></div>
+          <div class="footer-contact-row"><span>✉</span><span><a href="mailto:info@blueraysl.com"><span data-setting="email_primary">info@blueraysl.com</span></a></span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Blue-Ray (SL) Ltd. All rights reserved.</span>
+        <span>Mining · Construction · General Merchandise</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/site-dynamic.js"></script>
+</body>
+</html>

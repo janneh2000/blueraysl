@@ -29,6 +29,7 @@
         <li><a href="about.html">About</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="projects.html">Projects</a></li>
+        <li><a href="news.html">News</a></li>
         <li><a href="contact.html" class="nav-cta active">Get a Quote</a></li>
       </ul>
     </div>
@@ -63,8 +64,8 @@
             <div>
               <div class="contact-row-label">Office</div>
               <div class="contact-row-value">
-                5 Fort Street State Avenue<br>
-                Freetown, Sierra Leone
+                <span data-setting="address_line1">5 Fort Street State Avenue</span><br>
+                <span data-setting="address_line2">Freetown, Sierra Leone</span>
               </div>
             </div>
           </div>
@@ -74,8 +75,8 @@
             <div>
               <div class="contact-row-label">Phone</div>
               <div class="contact-row-value">
-                <a href="tel:+23278746182">+232-78-746182</a><br>
-                <a href="tel:+23288746182">+232-88-746182</a>
+                <a href="tel:+23278746182" data-setting-href="tel:phone_primary"><span data-setting="phone_primary">+232-78-746182</span></a><br>
+                <a href="tel:+23288746182" data-setting-href="tel:phone_secondary"><span data-setting="phone_secondary">+232-88-746182</span></a>
               </div>
             </div>
           </div>
@@ -85,9 +86,9 @@
             <div>
               <div class="contact-row-label">Email</div>
               <div class="contact-row-value">
-                <a href="mailto:info@blueraysl.com">info@blueraysl.com</a><br>
-                <a href="mailto:md@blueraysl.com">md@blueraysl.com</a><br>
-                <a href="mailto:blueraysl.co@gmail.com">blueraysl.co@gmail.com</a>
+                <a href="mailto:info@blueraysl.com"><span data-setting="email_primary">info@blueraysl.com</span></a><br>
+                <a href="mailto:md@blueraysl.com"><span data-setting="email_md">md@blueraysl.com</span></a><br>
+                <a href="mailto:blueraysl.co@gmail.com"><span data-setting="email_secondary">blueraysl.co@gmail.com</span></a>
               </div>
             </div>
           </div>
@@ -97,8 +98,8 @@
             <div>
               <div class="contact-row-label">Office Hours</div>
               <div class="contact-row-value">
-                Monday – Friday<br>
-                8:30 AM – 5:30 PM (GMT)
+                <span data-setting="hours_line1">Monday – Friday</span><br>
+                <span data-setting="hours_line2">8:30 AM – 5:30 PM (GMT)</span>
               </div>
             </div>
           </div>
@@ -243,6 +244,7 @@
             <li><a href="about.html">About Us</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="projects.html">Projects</a></li>
+            <li><a href="news.html">News</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
@@ -257,9 +259,9 @@
         </div>
         <div>
           <h5>Get In Touch</h5>
-          <div class="footer-contact-row"><span>📍</span><span>5 Fort Street State Avenue, Freetown, Sierra Leone</span></div>
-          <div class="footer-contact-row"><span>📞</span><span>+232-78-746182 / +232-88-746182</span></div>
-          <div class="footer-contact-row"><span>✉</span><span><a href="mailto:info@blueraysl.com">info@blueraysl.com</a></span></div>
+          <div class="footer-contact-row"><span>📍</span><span><span data-setting="address_line1">5 Fort Street State Avenue</span>, <span data-setting="address_line2">Freetown, Sierra Leone</span></span></div>
+          <div class="footer-contact-row"><span>📞</span><span><span data-setting="phone_primary">+232-78-746182</span> / <span data-setting="phone_secondary">+232-88-746182</span></span></div>
+          <div class="footer-contact-row"><span>✉</span><span><a href="mailto:info@blueraysl.com"><span data-setting="email_primary">info@blueraysl.com</span></a></span></div>
         </div>
       </div>
       <div class="footer-bottom">
@@ -273,5 +275,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/site-dynamic.js"></script>
 </body>
 </html>

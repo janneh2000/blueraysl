@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submissions — Blue-Ray Admin</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" type="image/png" href="../images/logo-small.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body" data-page="submissions">
+
+  <div class="admin-shell">
+    <div data-sidebar></div>
+
+    <main class="admin-main">
+      <div class="admin-page-head">
+        <div>
+          <button class="admin-burger" data-action="burger">☰</button>
+          <h1>Submissions</h1>
+          <p>Contact form messages from the website.</p>
+        </div>
+      </div>
+
+      <div class="search-bar">
+        <input id="search" type="search" placeholder="Search by name, email, message…">
+        <select id="filter-status">
+          <option value="all">All statuses</option>
+          <option value="new">New only</option>
+          <option value="replied">Replied</option>
+          <option value="archived">Archived</option>
+        </select>
+        <select id="filter-service">
+          <option value="all">All services</option>
+          <option value="Construction">Construction</option>
+          <option value="Mining">Mining</option>
+          <option value="Engineering / Surveys">Surveys</option>
+          <option value="General Supplies">Supplies</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div id="list">Loading…</div>
+    </main>
+  </div>
+
+  <!-- Drawer -->
+  <div class="drawer" id="drawer">
+    <div class="drawer-panel" id="drawer-panel"></div>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    renderSidebar('submissions');
+    const sb = window.adminSb;
+
+    let submissions = [];
+    let openId = null;
+
+    async function load() {
+      const { data, error } = await sb.from('contact_submissions')
+        .select('id,created_at,name,email,phone,service,message,status,admin_notes,replied_at')
+        .order('created_at', { ascending: false });
+      if (error) {
+        document.getElementById('list').innerHTML = `<p class="muted">Error: ${escHtml(error.message)}</p>`;
+        return;
+      }
+      submissions = data || [];
+      render();
+
+      // Open drawer if URL has ?id=
+      const params = new URLSearchParams(location.search);
+      const id = params.get('id');
+      if (id) openDrawer(id);
+    }
+
+    function render() {
+      const q = document.getElementById('search').value.trim().toLowerCase();
+      const s = document.getElementById('filter-status').value;
+      const sv = document.getElementById('filter-service').value;
+      const filtered = submissions.filter(r => {
+        if (s !== 'all' && r.status !== s) return false;
+        if (sv !== 'all' && r.service !== sv) return false;
+        if (q && !`${r.name} ${r.email} ${r.message}`.toLowerCase().includes(q)) return false;
+        return true;
+      });
+
+      const c = document.getElementById('list');
+      if (filtered.length === 0) {
+        c.innerHTML = '<div class="empty"><div class="icon">📭</div><p>No submissions match these filters.</p></div>';
+        return;
+      }
+
+      c.innerHTML = `
+        <div class="adm-list">
+          <div class="adm-list-row head">
+            <div>Name / Date</div><div>Email</div><div>Service</div><div>Status</div><div></div>
+          </div>
+          ${filtered.map(r => `
+            <div class="adm-list-row">
+              <div class="cell-name">
+                <strong>${escHtml(r.name)}</strong>
+                <span>${fmtDate(r.created_at)}</span>
+              </div>
+              <div><a href="mailto:${escHtml(r.email)}" style="color:var(--accent);">${escHtml(r.email)}</a></div>
+              <div>${escHtml(r.service || '—')}</div>
+              <div><span class="badge badge-${r.status}">${escHtml(r.status)}</span></div>
+              <div class="cell-actions">
+                <button class="btn-ghost-sm" data-open="${r.id}">Open</button>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    document.getElementById('search').addEventListener('input', render);
+    document.getElementById('filter-status').addEventListener('change', render);
+    document.getElementById('filter-service').addEventListener('change', render);
+
+    document.addEventListener('click', (e) => {
+      const id = e.target.dataset.open;
+      if (id) openDrawer(id);
+      if (e.target.matches('[data-action="close-drawer"]') || e.target.id === 'drawer') closeDrawer();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeDrawer();
+    });
+
+    function openDrawer(id) {
+      const r = submissions.find(x => x.id === id);
+      if (!r) return;
+      openId = id;
+      const replyHref = `mailto:${encodeURIComponent(r.email)}?subject=${encodeURIComponent('Re: Your enquiry to Blue-Ray')}&body=${encodeURIComponent('Hi ' + (r.name || '') + ',\n\nThank you for your enquiry. ')}`;
+
+      document.getElementById('drawer-panel').innerHTML = `
+        <button class="drawer-close" data-action="close-drawer">← Back to inbox</button>
+        <h2 style="margin-bottom:6px;">${escHtml(r.name)}</h2>
+        <div class="muted" style="font-size:0.9rem; margin-bottom:18px;">
+          Submitted ${fmtDate(r.created_at)}
+          &middot; <span class="badge badge-${r.status}">${escHtml(r.status)}</span>
+        </div>
+
+        <div class="drawer-row">
+          <div class="lab">Email</div>
+          <div class="val"><a href="mailto:${escHtml(r.email)}">${escHtml(r.email)}</a></div>
+        </div>
+        <div class="drawer-row">
+          <div class="lab">Phone</div>
+          <div class="val">${r.phone ? `<a href="tel:${escHtml(r.phone)}">${escHtml(r.phone)}</a>` : '—'}</div>
+        </div>
+        <div class="drawer-row">
+          <div class="lab">Service</div>
+          <div class="val">${escHtml(r.service || '—')}</div>
+        </div>
+        <div class="drawer-row">
+          <div class="lab">Message</div>
+          <div class="val">${escHtml(r.message || '')}</div>
+        </div>
+
+        <div class="adm-form-group" style="margin-top:24px;">
+          <label>Internal notes</label>
+          <textarea id="notes-${escHtml(r.id)}" rows="4" placeholder="Notes only visible to the admin team…">${escHtml(r.admin_notes || '')}</textarea>
+        </div>
+
+        <div class="btn-row" style="margin-top:18px; flex-wrap:wrap;">
+          <a href="${replyHref}" class="btn-primary-sm">✉ Reply by email</a>
+          <button class="btn-ghost-sm" data-set-status="new"      data-id="${r.id}">Mark new</button>
+          <button class="btn-ghost-sm" data-set-status="replied"  data-id="${r.id}">Mark replied</button>
+          <button class="btn-ghost-sm" data-set-status="archived" data-id="${r.id}">Archive</button>
+          <button class="btn-ghost-sm" data-save-notes="${r.id}">Save notes</button>
+          <button class="btn-ghost-sm btn-danger-sm" data-delete="${r.id}">Delete</button>
+        </div>
+      `;
+      document.getElementById('drawer').classList.add('open');
+    }
+
+    function closeDrawer() {
+      document.getElementById('drawer').classList.remove('open');
+      openId = null;
+      // Strip ?id= from URL
+      if (location.search) history.replaceState({}, '', location.pathname);
+    }
+
+    document.addEventListener('click', async (e) => {
+      const setStatus = e.target.dataset.setStatus;
+      if (setStatus) {
+        const id = e.target.dataset.id;
+        const patch = { status: setStatus };
+        if (setStatus === 'replied') patch.replied_at = new Date().toISOString();
+        const { error } = await sb.from('contact_submissions').update(patch).eq('id', id);
+        if (error) return toast(error.message, 'error');
+        toast('Status updated');
+        await load();
+        if (openId) openDrawer(openId);
+      }
+
+      const saveNotesId = e.target.dataset.saveNotes;
+      if (saveNotesId) {
+        const ta = document.getElementById('notes-' + saveNotesId);
+        const { error } = await sb.from('contact_submissions')
+          .update({ admin_notes: ta.value }).eq('id', saveNotesId);
+        if (error) return toast(error.message, 'error');
+        toast('Notes saved');
+        await load();
+      }
+
+      const delId = e.target.dataset.delete;
+      if (delId) {
+        if (!confirm('Delete this submission permanently? This cannot be undone.')) return;
+        const { error } = await sb.from('contact_submissions').delete().eq('id', delId);
+        if (error) return toast(error.message, 'error');
+        toast('Deleted');
+        closeDrawer();
+        await load();
+      }
+    });
+
+    load();
+  </script>
+</body>
+</html>
