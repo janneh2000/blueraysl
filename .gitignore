@@ -17,3 +17,7 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Raw, uncompressed media (we use the optimised copies in images/mining/)
+images/video-Blueray/
+

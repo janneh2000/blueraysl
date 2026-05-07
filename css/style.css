@@ -1079,6 +1079,197 @@ section { position: relative; }
   line-height: 1.4;
 }
 
+/* ============== MINING OPERATIONS COMPONENTS ============== */
+
+/* Mining hero with autoplay video background */
+.mining-video-hero {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  background: var(--surface-2);
+  margin-top: 30px;
+}
+.mining-video-hero video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.mining-video-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(10,14,26,.85) 100%);
+  pointer-events: none;
+}
+.mining-video-hero .mining-video-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 24px 28px;
+  z-index: 1;
+}
+.mining-video-hero .mining-video-caption .label {
+  display: inline-block;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.mining-video-hero .mining-video-caption h4 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+/* Mining gallery (mixed mosaic) */
+.mining-gallery {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 14px;
+  margin-top: 40px;
+}
+.mining-tile {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+  cursor: pointer;
+  transition: transform .25s var(--tx);
+  aspect-ratio: 1/1;
+}
+.mining-tile img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .4s var(--tx);
+}
+.mining-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(10,14,26,.85) 100%);
+  pointer-events: none;
+}
+.mining-tile-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 14px 16px;
+  z-index: 1;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text);
+}
+.mining-tile:hover img { transform: scale(1.06); }
+.mining-tile:hover { box-shadow: var(--shadow-md); }
+
+/* Mosaic spans */
+.mining-tile.span-6 { grid-column: span 6; aspect-ratio: 16/9; }
+.mining-tile.span-4 { grid-column: span 4; }
+.mining-tile.span-3 { grid-column: span 3; }
+.mining-tile.span-8 { grid-column: span 8; aspect-ratio: 16/9; }
+.mining-tile.span-12 { grid-column: span 12; aspect-ratio: 21/9; }
+
+@media (max-width: 800px) {
+  .mining-gallery { grid-template-columns: repeat(6, 1fr); }
+  .mining-tile.span-6, .mining-tile.span-4, .mining-tile.span-3, .mining-tile.span-8, .mining-tile.span-12 { grid-column: span 6; aspect-ratio: 4/3; }
+}
+
+/* Inline video card */
+.video-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.video-card video {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  background: #000;
+}
+.video-card-meta {
+  padding: 18px 22px;
+}
+.video-card-meta .label {
+  display: inline-block;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.video-card-meta h4 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.video-card-meta p { color: var(--text-muted); font-size: 0.88rem; }
+@media (max-width: 800px) {
+  .reveal[style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Government contract proof card */
+.contract-proof {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 36px;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-2);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin-top: 50px;
+}
+.contract-proof img {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+.contract-proof h4 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  letter-spacing: 0.04em;
+}
+.contract-proof p { color: var(--text-muted); font-size: 0.98rem; }
+.contract-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 18px;
+  font-size: 0.88rem;
+}
+.contract-meta-row {
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+}
+.contract-meta-label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+  margin-bottom: 2px;
+}
+.contract-meta-value { color: var(--text); }
+@media (max-width: 800px) {
+  .contract-proof { grid-template-columns: 1fr; gap: 24px; }
+}
+
 /* Filter chips for projects page */
 .filter-chips {
   display: flex;

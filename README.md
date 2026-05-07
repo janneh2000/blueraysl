@@ -68,7 +68,7 @@ git push
 
 | What to change | Where to find it |
 |---|---|
-| Phone numbers / emails | Search across `*.html` for `+232-32-888888` or `info@blueraysl.com` |
+| Phone numbers / emails | Search across `*.html` for `+232-78-746182` or `info@blueraysl.com` |
 | Hero headline | `index.html`, line ~54 |
 | Stats numbers | `index.html`, the `data-count="..."` attributes |
 | Project captions | `projects.html`, inside each `.project-card` |
