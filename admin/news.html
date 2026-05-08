@@ -111,7 +111,7 @@
     function openEditor(id) {
       const p = id ? posts.find(x => x.id === id) : {
         id: null, slug: '', title: '', excerpt: '', body: '',
-        image_url: '', status: 'draft', published_at: null
+        image_url: '', status: 'published', published_at: null
       };
       if (!p) return;
 
@@ -159,15 +159,19 @@
             <div class="adm-form-group">
               <label>Status</label>
               <select name="status">
-                <option value="draft" ${p.status==='draft'?'selected':''}>Draft</option>
-                <option value="published" ${p.status==='published'?'selected':''}>Published</option>
+                <option value="published" ${p.status==='published'?'selected':''}>Published — visible on the site</option>
+                <option value="draft" ${p.status==='draft'?'selected':''}>Draft — hidden, only visible here</option>
               </select>
             </div>
             <div class="adm-form-group">
-              <label>Publish date (only set when publishing)</label>
+              <label>Publish date (auto-set when publishing)</label>
               <input name="published_at" type="datetime-local" value="${p.published_at ? new Date(p.published_at).toISOString().slice(0,16) : ''}">
             </div>
           </div>
+
+          <p class="muted" style="font-size: 0.82rem; margin-top: 8px;">
+            💡 Posts saved as <strong>Published</strong> appear on <code>/news.html</code> immediately.
+          </p>
 
           <div class="btn-row" style="margin-top:18px;">
             <button type="submit" class="btn-primary-sm">💾 Save</button>

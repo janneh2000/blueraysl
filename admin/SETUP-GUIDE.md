@@ -54,7 +54,35 @@ This requires creating a Google Cloud project. Worth it if you want one-click si
 4. Copy the **Client ID** and **Client secret**
 5. In Supabase → **Authentication** → **Providers** → enable **Google** → paste both values → save
 
-Now the **"Continue with Google"** button on the login page will work. Each admin still needs to be created in **Authentication → Users** first (Google sign-in only works for already-allowed users — just add them with the email they'll use to sign in).
+#### ⚠️ Critical extra step — whitelist the admin redirect URL in Supabase
+
+If you skip this, Google sign-in will work but Supabase will dump you on the home page instead of the admin dashboard.
+
+In Supabase → **Authentication** → **URL Configuration**:
+
+**Site URL** — set to your main domain (used as the default destination):
+```
+https://blueraysl.com
+```
+(or `https://blueraysl.vercel.app` until your domain is connected)
+
+**Redirect URLs** — add **every** URL the admin might land on, one per line:
+```
+https://blueraysl.com/admin/index.html
+https://blueraysl.com/admin/**
+https://blueraysl.vercel.app/admin/index.html
+https://blueraysl.vercel.app/admin/**
+http://localhost:8000/admin/index.html
+http://localhost:8000/admin/**
+```
+
+(The `**` wildcard at the end catches sub-pages.)
+
+Click **Save**. Now Google sign-in will land you on the admin dashboard.
+
+**Already covered as a safety net:** the public site has a small JavaScript "rescue" — if Supabase still falls back to the home page somehow, the page detects the auth tokens in the URL and redirects to `/admin/index.html` automatically. So even if you mistype a URL above, you'll usually still end up in the right place.
+
+Each admin must be created in **Authentication → Users** first (Google sign-in only works for already-allowed users — just add them with the email they'll use to sign in).
 
 ---
 

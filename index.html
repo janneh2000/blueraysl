@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script>document.documentElement.classList.add("js");</script>
+  <script>document.documentElement.classList.add("js");
+  // Admin OAuth rescue: if a user just signed in via Google and Supabase
+  // fell back to a public page, send them to the admin with the auth hash intact.
+  (function(){
+    if (location.hash.indexOf("access_token=") !== -1 && location.pathname.indexOf("/admin/") === -1) {
+      location.replace("admin/index.html" + location.hash);
+    }
+  })();</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blue-Ray Mining &amp; Construction Co. (SL) Ltd. — Building West Africa's Future</title>

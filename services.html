@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script>document.documentElement.classList.add("js");</script>
+  <script>document.documentElement.classList.add("js");
+  // Admin OAuth rescue: if a user just signed in via Google and Supabase
+  // fell back to a public page, send them to the admin with the auth hash intact.
+  (function(){
+    if (location.hash.indexOf("access_token=") !== -1 && location.pathname.indexOf("/admin/") === -1) {
+      location.replace("admin/index.html" + location.hash);
+    }
+  })();</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services — Blue-Ray Mining &amp; Construction Co. (SL) Ltd.</title>
@@ -244,50 +251,59 @@
         </div>
       </div>
 
-      <!-- PHOTO MOSAIC -->
+      <!-- PHOTO MOSAIC — leading with diamonds + gold output -->
       <div class="reveal mining-gallery">
-        <div class="mining-tile span-8">
-          <img src="images/mining/processing-plant.jpg" alt="Industrial conveyor processing plant">
-          <div class="mining-tile-caption">Industrial conveyor &amp; processing facility</div>
+        <div class="mining-tile span-6">
+          <img src="images/mining/diamonds-rough.jpg" alt="Rough uncut diamonds from Blue-Ray operations">
+          <div class="mining-tile-caption">💎 Rough diamonds — pre-export</div>
         </div>
-        <div class="mining-tile span-4">
-          <img src="images/mining/gold-bars.jpg" alt="Refined gold bars and nuggets">
-          <div class="mining-tile-caption">Refined gold output</div>
-        </div>
-
-        <div class="mining-tile span-4">
-          <img src="images/mining/stockpile-mound.jpg" alt="Mineral stockpile mound">
-          <div class="mining-tile-caption">Stockpile mound — extraction site</div>
-        </div>
-        <div class="mining-tile span-4">
-          <img src="images/mining/excavation-site.jpg" alt="Active mining excavation">
-          <div class="mining-tile-caption">Active excavation pit</div>
-        </div>
-        <div class="mining-tile span-4">
-          <img src="images/mining/red-earth-stockpile.jpg" alt="Red earth stockpile">
-          <div class="mining-tile-caption">Mineral-bearing earth stockpile</div>
+        <div class="mining-tile span-6">
+          <img src="images/mining/gold-bars-stack.jpg" alt="Stack of refined gold bars">
+          <div class="mining-tile-caption">🥇 Refined gold bars</div>
         </div>
 
-        <div class="mining-tile span-3">
+        <div class="mining-tile span-4">
           <img src="images/mining/gold-pile.jpg" alt="Raw gold concentrate">
-          <div class="mining-tile-caption">Raw gold concentrate</div>
+          <div class="mining-tile-caption">Gold concentrate, washed</div>
         </div>
-        <div class="mining-tile span-3">
-          <img src="images/mining/gold-nuggets-paper.jpg" alt="Gold nuggets">
+        <div class="mining-tile span-4">
+          <img src="images/mining/gold-dust.jpg" alt="Fine gold dust pile">
+          <div class="mining-tile-caption">Fine gold dust</div>
+        </div>
+        <div class="mining-tile span-4">
+          <img src="images/mining/gold-nuggets-paper.jpg" alt="Gold nuggets sorted">
           <div class="mining-tile-caption">Gold nuggets, sorted</div>
-        </div>
-        <div class="mining-tile span-3">
-          <img src="images/mining/concentrate-pan.jpg" alt="Mineral concentrate in washing pan">
-          <div class="mining-tile-caption">Concentrate after washing</div>
-        </div>
-        <div class="mining-tile span-3">
-          <img src="images/mining/mineral-sorting.jpg" alt="Hand sorting minerals">
-          <div class="mining-tile-caption">Hand-sorting minerals</div>
         </div>
 
         <div class="mining-tile span-6">
-          <img src="images/mining/processing-equipment.jpg" alt="Mineral processing equipment">
-          <div class="mining-tile-caption">Mineral processing equipment in use</div>
+          <img src="images/mining/dual-machinery.jpg" alt="Dual heavy machinery on a Blue-Ray mining site">
+          <div class="mining-tile-caption">Heavy plant — Bobcat &amp; tracked excavator</div>
+        </div>
+        <div class="mining-tile span-6">
+          <img src="images/mining/processing-plant.jpg" alt="On-site processing plant">
+          <div class="mining-tile-caption">On-site processing facility</div>
+        </div>
+
+        <div class="mining-tile span-3">
+          <img src="images/mining/excavation-site.jpg" alt="Active excavation pit">
+          <div class="mining-tile-caption">Active excavation pit</div>
+        </div>
+        <div class="mining-tile span-3">
+          <img src="images/mining/stockpile-mound.jpg" alt="Mineral stockpile mound">
+          <div class="mining-tile-caption">Mineral stockpile</div>
+        </div>
+        <div class="mining-tile span-3">
+          <img src="images/mining/red-earth-stockpile.jpg" alt="Red earth stockpile">
+          <div class="mining-tile-caption">Mineral-bearing earth</div>
+        </div>
+        <div class="mining-tile span-3">
+          <img src="images/mining/concentrate-pan.jpg" alt="Concentrate in washing pan">
+          <div class="mining-tile-caption">Concentrate after washing</div>
+        </div>
+
+        <div class="mining-tile span-6">
+          <img src="images/mining/mineral-sorting.jpg" alt="Hand sorting minerals">
+          <div class="mining-tile-caption">Hand-sorting minerals</div>
         </div>
         <div class="mining-tile span-6">
           <img src="images/mining/team-with-loader.jpg" alt="Blue-Ray team with wheel loader">

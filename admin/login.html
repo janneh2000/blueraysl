@@ -89,9 +89,12 @@
 
     document.getElementById('btn-google').addEventListener('click', async () => {
       clearErr();
+      // Build a redirect URL that points back to admin/index.html.
+      // ⚠️ This URL must be added to Supabase → Authentication → URL Configuration → Redirect URLs.
+      const redirectTo = location.origin + location.pathname.replace(/login\.html.*/, 'index.html');
       const { error } = await sb.auth.signInWithOAuth({
         provider: 'google',
-        options: { redirectTo: location.origin + location.pathname.replace('login.html', 'index.html') }
+        options: { redirectTo }
       });
       if (error) showErr(error.message || 'Google sign-in failed.');
     });
