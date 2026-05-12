@@ -41,6 +41,13 @@
         if (span) span.setAttribute('data-count', map[key]);
       }
     });
+    // 4. Update WhatsApp button to use phone_primary
+    const wa = document.getElementById('wa-fab');
+    if (wa && map.phone_primary) {
+      const digits = String(map.phone_primary).replace(/[^\d]/g, '');
+      const msg = encodeURIComponent("Hello Blue-Ray, I'd like to enquire about your services.");
+      wa.setAttribute('href', `https://wa.me/${digits}?text=${msg}`);
+    }
   }
 
   async function loadProjects() {
