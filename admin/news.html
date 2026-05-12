@@ -221,26 +221,36 @@
       if (e.target.id !== 'news-form') return;
       e.preventDefault();
       const f = e.target;
-      const id = f.id.value || null;
-      const status = f.status.value;
-      let publishedAt = f.published_at.value ? new Date(f.published_at.value).toISOString() : null;
-      // Auto-set publish date when publishing
+      // Use FormData to avoid the `form.id` DOM-property collision (was silently breaking edits).
+      const fd = new FormData(f);
+      const id = (fd.get('id') || '').toString().trim() || null;
+      const status = fd.get('status') || 'published';
+      const publishedAtRaw = (fd.get('published_at') || '').toString();
+      let publishedAt = publishedAtRaw ? new Date(publishedAtRaw).toISOString() : null;
       if (status === 'published' && !publishedAt) publishedAt = new Date().toISOString();
+      const title = (fd.get('title') || '').toString().trim();
+      const slug  = (fd.get('slug')  || '').toString().trim() || slugify(title);
       const payload = {
-        title: f.title.value.trim(),
-        slug:  f.slug.value.trim() || slugify(f.title.value),
-        excerpt: f.excerpt.value.trim() || null,
-        body: f.body.value || null,
-        image_url: f.image_url.value || null,
+        title,
+        slug,
+        excerpt:   (fd.get('excerpt')   || '').toString().trim() || null,
+        body:      (fd.get('body')      || '').toString() || null,
+        image_url: (fd.get('image_url') || '').toString() || null,
         status,
         published_at: publishedAt
       };
       if (!payload.title || !payload.slug) return toast('Title and slug are required', 'error');
+
+      console.log('Saving news_post:', { id, payload });
       const sbq = id
         ? sb.from('news_posts').update(payload).eq('id', id)
         : sb.from('news_posts').insert(payload);
-      const { error } = await sbq;
-      if (error) return toast(error.message, 'error');
+      const { data, error } = await sbq.select();
+      if (error) {
+        console.error('news_posts save error:', error);
+        return toast('Save failed: ' + error.message, 'error');
+      }
+      console.log('news_posts saved:', data);
       toast(id ? 'Post saved' : 'Post created');
       closeDrawer();
       await load();

@@ -240,23 +240,30 @@
       if (e.target.id !== 'proj-form') return;
       e.preventDefault();
       const f = e.target;
-      const id = f.id.value || null;
+      // Use FormData to avoid the `form.id` DOM-property collision.
+      const fd = new FormData(f);
+      const id = (fd.get('id') || '').toString().trim() || null;
       const payload = {
-        title: f.title.value.trim(),
-        caption: f.caption.value.trim() || null,
-        category: f.category.value,
-        status: f.status.value,
-        featured: f.featured.value === 'true',
-        sort_order: parseInt(f.sort_order.value, 10) || 100,
-        image_url: f.image_url.value
+        title:      (fd.get('title')      || '').toString().trim(),
+        caption:    (fd.get('caption')    || '').toString().trim() || null,
+        category:   (fd.get('category')   || 'roads').toString(),
+        status:     (fd.get('status')     || 'published').toString(),
+        featured:   (fd.get('featured')   || 'false').toString() === 'true',
+        sort_order: parseInt(fd.get('sort_order') || '100', 10) || 100,
+        image_url:  (fd.get('image_url')  || '').toString()
       };
       if (!payload.title || !payload.image_url) return toast('Title and image are required', 'error');
 
+      console.log('Saving project:', { id, payload });
       const sbq = id
         ? sb.from('projects').update(payload).eq('id', id)
         : sb.from('projects').insert(payload);
-      const { error } = await sbq;
-      if (error) return toast(error.message, 'error');
+      const { data, error } = await sbq.select();
+      if (error) {
+        console.error('projects save error:', error);
+        return toast('Save failed: ' + error.message, 'error');
+      }
+      console.log('project saved:', data);
       toast(id ? 'Project updated' : 'Project created');
       closeDrawer();
       await load();
