@@ -1,0 +1,82 @@
+{
+  "_comment": "Source manifest for scripts/optimize-media.py. 'crop' is [top, bottom] as a fraction of height, used to strip phone screenshot chrome and letterbox bars. 'rotate' overrides broken rotation metadata on video.",
+  "uploadRoot": "media/src",
+  "legacyRoot": "images",
+
+  "newPhotos": [
+    { "src": "Bauxite Mining and Hauling/PHOTO-2026-11-03-22-36-31.jpg", "slug": "bauxite-vessel-loading", "cat": "bauxite" },
+    { "src": "Bauxite Mining and Hauling/PHOTO-2026-11-03-22-36-32.jpg", "slug": "bauxite-stockpile", "cat": "bauxite" },
+    { "src": "Bauxite Mining and Hauling/PHOTO-2026-11-03-22-36-34.jpg", "slug": "bauxite-excavation", "cat": "bauxite" },
+    { "src": "Bauxite Mining and Hauling/PHOTO-2026-11-03-22-36-36.jpg", "slug": "bauxite-site-team", "cat": "bauxite" },
+
+    { "src": "coltan/PHOTO-2026-11-03-22-39-26.jpg", "slug": "coltan-ore", "cat": "coltan" },
+    { "src": "coltan/PHOTO-2026-11-03-22-39-27.jpg", "slug": "coltan-concentrate", "cat": "coltan", "crop": [0.105, 0.919] },
+
+    { "src": "Diamonds 💎 Mining and Trading/PHOTO-2026-11-03-22-42-00 2.jpg", "slug": "diamond-parcel-tray", "cat": "diamonds", "crop": [0.209, 0.826] },
+    { "src": "Diamonds 💎 Mining and Trading/PHOTO-2026-11-03-22-42-00.jpg", "slug": "diamond-parcel-mixed", "cat": "diamonds", "crop": [0.209, 0.826] },
+    { "src": "Diamonds 💎 Mining and Trading/PHOTO-2026-11-03-22-42-01.jpg", "slug": "diamond-parcel-sorted", "cat": "diamonds" },
+    { "src": "Diamonds 💎 Mining and Trading/PHOTO-2026-11-03-22-42-02.jpg", "slug": "diamond-parcel-dated", "cat": "diamonds" },
+    { "src": "Diamonds 💎 Mining and Trading/PHOTO-2026-11-03-23-27-09.jpg", "slug": "diamond-rough-large", "cat": "diamonds" },
+    { "src": "Diamonds 💎 Mining and Trading/PHOTO-2026-11-03-23-27-10 2.jpg", "slug": "diamond-octahedron", "cat": "diamonds" },
+    { "src": "Diamonds 💎 Mining and Trading/PHOTO-2026-11-03-23-27-10.jpg", "slug": "diamond-loupe", "cat": "diamonds" },
+    { "src": "Diamonds 💎 Mining and Trading/PHOTO-2026-11-03-23-27-11 2.jpg", "slug": "diamond-crystal-small", "cat": "diamonds" },
+    { "src": "Diamonds 💎 Mining and Trading/PHOTO-2026-11-03-23-27-11.jpg", "slug": "diamond-rough-yellow", "cat": "diamonds" },
+    { "src": "Diamonds 💎 Mining and Trading/PHOTO-2026-11-03-23-27-12 2.jpg", "slug": "diamond-rough-clear", "cat": "diamonds" },
+    { "src": "Diamonds 💎 Mining and Trading/PHOTO-2026-11-03-23-27-12.jpg", "slug": "diamond-parcel-weights", "cat": "diamonds" },
+
+    { "src": "Gold Mining and Trading/PHOTO-2026-11-03-22-40-31.jpg", "slug": "gold-dust-paper", "cat": "gold" },
+    { "src": "Gold Mining and Trading/PHOTO-2026-11-03-22-40-32 2.jpg", "slug": "gold-nuggets-pan", "cat": "gold" },
+    { "src": "Gold Mining and Trading/PHOTO-2026-11-03-22-40-32 3.jpg", "slug": "gold-dust-fine", "cat": "gold", "crop": [0.279, 0.767] },
+    { "src": "Gold Mining and Trading/PHOTO-2026-11-03-22-40-32 4.jpg", "slug": "gold-flakes-lined", "cat": "gold" },
+    { "src": "Gold Mining and Trading/PHOTO-2026-11-03-22-40-32.jpg", "slug": "gold-dust-parcel", "cat": "gold" },
+    { "src": "Gold Mining and Trading/PHOTO-2026-11-03-23-24-26 2.jpg", "slug": "gold-flakes-bright", "cat": "gold" },
+    { "src": "Gold Mining and Trading/PHOTO-2026-11-03-23-24-26.jpg", "slug": "gold-flakes-coarse", "cat": "gold" },
+    { "src": "Gold Mining and Trading/PHOTO-2026-11-03-23-24-27 2.jpg", "slug": "gold-dust-bowl", "cat": "gold" },
+    { "src": "Gold Mining and Trading/PHOTO-2026-11-03-23-24-27.jpg", "slug": "gold-grain-paper", "cat": "gold" },
+    { "src": "Gold Mining and Trading/PHOTO-2026-11-03-23-24-28 2.jpg", "slug": "gold-weighing-scale", "cat": "gold" },
+    { "src": "Gold Mining and Trading/PHOTO-2026-11-03-23-24-28.jpg", "slug": "gold-assay-record", "cat": "gold" },
+
+    { "src": "Hauling Bauxite, Granite and Sand Minerals/PHOTO-2026-11-03-23-28-32.jpg", "slug": "haul-fleet-line", "cat": "haulage" },
+    { "src": "Hauling Bauxite, Granite and Sand Minerals/PHOTO-2026-11-03-23-28-33 2.jpg", "slug": "haul-tipper-front", "cat": "haulage" },
+    { "src": "Hauling Bauxite, Granite and Sand Minerals/PHOTO-2026-11-03-23-28-33.jpg", "slug": "haul-tractor-units", "cat": "haulage" },
+    { "src": "Hauling Bauxite, Granite and Sand Minerals/PHOTO-2026-11-03-23-28-34.jpg", "slug": "haul-fleet-crew", "cat": "haulage" },
+
+    { "src": "High Mineral Concentrations (HMC)/PHOTO-2026-11-03-22-33-56 2.jpg", "slug": "hmc-spiral-plant", "cat": "hmc" },
+    { "src": "High Mineral Concentrations (HMC)/PHOTO-2026-11-03-22-33-56 3.jpg", "slug": "hmc-stockpile", "cat": "hmc" },
+    { "src": "High Mineral Concentrations (HMC)/PHOTO-2026-11-03-22-33-56 4.jpg", "slug": "hmc-plant-riverside", "cat": "hmc" },
+    { "src": "High Mineral Concentrations (HMC)/PHOTO-2026-11-03-22-33-56.jpg", "slug": "hmc-conveyor-stockpile", "cat": "hmc" }
+  ],
+
+  "videos": [
+    { "src": "Bauxite Mining and Hauling/VIDEO-2026-11-03-22-37-00.mp4", "slug": "bauxite-loading", "cat": "bauxite", "rotate": "none", "orientation": "landscape", "trim": [50, 40],
+      "_note": "Rotation metadata on this file is wrong: it claims -90 but the stored 848x480 frame is already upright, so encode with -noautorotate. The source runs 3m13s, which is far too heavy for a web page; trimmed to a 40s window from 0:50 where the loader-and-tipper cycle is clearest. The full original is in media/src." },
+    { "src": "Bauxite Mining and Hauling/VIDEO-2026-11-03-22-36-40.mp4", "slug": "bauxite-conveyor", "cat": "bauxite", "rotate": "auto", "orientation": "landscape" },
+    { "src": "Gold Mining and Trading/VIDEO-2026-11-03-23-25-56.mp4", "slug": "gold-pit", "cat": "gold", "rotate": "auto", "orientation": "portrait" },
+    { "src": "Sand Mining and Trading/VIDEO-2026-11-03-23-23-16.mp4", "slug": "sand-dredge", "cat": "sand", "rotate": "auto", "orientation": "portrait" },
+    { "src": "Sand Mining and Trading/VIDEO-2026-11-03-23-23-17.mp4", "slug": "sand-river", "cat": "sand", "rotate": "auto", "orientation": "portrait" }
+  ],
+
+  "legacyPhotos": [
+    "hero/bridge-construction.jpg", "hero/road-equipment.jpg", "hero/village-road.jpg",
+    "logo-small.png",
+    "mining/concentrate-pan.jpg", "mining/diamonds-rough.jpg", "mining/dual-machinery.jpg",
+    "mining/excavation-site.jpg", "mining/gold-bars-stack.jpg", "mining/gold-dust.jpg",
+    "mining/gold-nuggets-paper.jpg", "mining/gold-pile.jpg", "mining/mineral-sorting.jpg",
+    "mining/processing-plant.jpg", "mining/red-earth-stockpile.jpg", "mining/slra-signboard.jpg",
+    "mining/stockpile-mound.jpg", "mining/team-with-loader.jpg",
+    "projects/bridge-24m.jpg", "projects/bridge-approach.jpg", "projects/bridge-backfill.jpg",
+    "projects/bridge-mameima.jpg", "projects/civil-works.jpg", "projects/control-building.jpg",
+    "projects/culvert-completed.jpg", "projects/equipment-foundation.jpg", "projects/feeder-road.jpg",
+    "projects/fence-dormitory.jpg", "projects/foundations.jpg", "projects/office-building.jpg",
+    "projects/road-01.jpg", "projects/road-02.jpg", "projects/road-03.jpg", "projects/road-04.jpg",
+    "projects/road-05.jpg", "projects/road-06.jpg", "projects/road-brushing.jpg",
+    "projects/security-post.jpg", "projects/steel-workshop.jpg", "projects/workshop-exterior.jpg",
+    "projects/workshop-interior.jpg"
+  ],
+
+  "legacyVideos": [
+    { "src": "mining/videos/mining-overview.mp4", "slug": "legacy-mining-overview", "cat": "legacy", "rotate": "auto", "orientation": "landscape" },
+    { "src": "mining/videos/excavation.mp4", "slug": "legacy-excavation", "cat": "legacy", "rotate": "auto", "orientation": "landscape" },
+    { "src": "mining/videos/processing-trommel.mp4", "slug": "legacy-trommel", "cat": "legacy", "rotate": "auto", "orientation": "portrait" }
+  ]
+}

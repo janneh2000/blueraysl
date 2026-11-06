@@ -1,0 +1,13 @@
+{
+  "name": "blueraysl",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Website for Blue-Ray Mining & Construction Co. (SL) Ltd.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "media": "python3 scripts/optimize-media.py",
+    "serve": "node scripts/build.mjs && cd dist && python3 -m http.server 8000"
+  },
+  "engines": { "node": ">=18" }
+}

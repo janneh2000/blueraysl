@@ -1,88 +1,75 @@
 # Blue-Ray Mining & Construction Co. (SL) Ltd. — Website
 
-Official website for **Blue-Ray (SL) Ltd.** — an indigenous Sierra Leonean construction, mining and engineering company.
+Official website for **Blue-Ray (SL) Ltd.** — an indigenous Sierra Leonean
+construction, mining and engineering company.
 
-🌍 **Live:** https://blueraysl.com  (for now we use this: https://blueraysl.vercel.app/)
+**Live:** https://blueraysl.com · hosted on Cloudflare Pages
 
-## Stack
+## How it works
 
-- Plain HTML, CSS, and vanilla JavaScript — no build step
-- Self-contained: drop the folder onto any static host
-- ~7 MB total, including 26 project photos
-- Hosted on [Vercel](https://vercel.com), domain managed at Vercel
+Static HTML, generated from templates. No framework, no runtime dependencies,
+no database.
 
-## Pages
-
-| Page | What's on it |
-|---|---|
-| `index.html` | Landing — hero, stats, services overview, featured projects, partners, CTA |
-| `about.html` | Company story, core values, leadership, government clients, partners |
-| `services.html` | Construction · Mining · Engineering & Surveys · Supplies (+ delivery process) |
-| `projects.html` | Filterable gallery with lightbox (Roads · Bridges · Buildings · Industrial) |
-| `contact.html` | Contact info, enquiry form, office map |
-
-## Local preview
-
-```bash
-# Easiest: just double-click index.html
-
-# Or run a tiny dev server:
-python3 -m http.server 8000
-# → open http://localhost:8000
+```
+src/layouts/base.html   the page shell — nav, footer, <head>, in ONE place
+src/pages/*.html        page content + a <!--meta--> block for title/description
+src/data/*.json         site details, minerals, projects, achievements
+scripts/build.mjs       renders src/pages -> dist/   (plain Node, zero deps)
+scripts/optimize-media.py  photo + video pipeline
+functions/api/contact.js   Cloudflare Pages Function behind the contact form
+media/src/              original photos (video originals are gitignored)
+assets/                 generated web media — committed, do not hand-edit
+dist/                   build output — gitignored
 ```
 
-## Deploy to Vercel
+Editing a phone number, a nav item or the footer means editing one file, not seven.
 
-The fastest way once this repo is on GitHub:
-
-1. Go to https://vercel.com/new
-2. Import this repo
-3. **Framework Preset:** Other (this is plain static HTML)
-4. **Root Directory:** `./` (default)
-5. **Build Command:** _(leave empty)_
-6. **Output Directory:** `./` (default)
-7. Click **Deploy**
-
-You'll get a `blueraysl.vercel.app` URL in 30 seconds.
-
-### Connect the custom domain `blueraysl.com`
-
-1. In Vercel → your project → **Settings** → **Domains**
-2. Click **Buy** (or **Add** if you bought it elsewhere)
-3. If you buy through Vercel: DNS, HTTPS and renewal are handled automatically
-4. If you bought elsewhere: add the records Vercel shows you at your registrar
-
-## Editing without re-deploying every time
-
-Vercel auto-deploys on every push to `main`. So:
+## Commands
 
 ```bash
-# Make a change, e.g. update a phone number
-git add .
-git commit -m "Update phone number"
-git push
-# → live in ~30 seconds
+npm run build     # render dist/
+npm run serve     # build, then serve dist/ at http://localhost:8000
+npm run media     # re-run the image/video pipeline after adding source media
 ```
 
-## Common tweaks
+`npm run media` needs Python with Pillow, plus ffmpeg. It writes `assets/` and
+`src/data/media-index.json`, which the build reads to generate `<picture>`
+markup. Commit both.
 
-| What to change | Where to find it |
-|---|---|
-| Phone numbers / emails | Search across `*.html` for `+232-78-746182` or `info@blueraysl.com` |
-| Hero headline | `index.html`, line ~54 |
-| Stats numbers | `index.html`, the `data-count="..."` attributes |
-| Project captions | `projects.html`, inside each `.project-card` |
-| Add a new project | Copy any `.project-card` block, swap image + caption |
-| Colours / fonts | `css/style.css`, top of file (`:root` block) |
+## Adding photos or video
 
-## Photos
+1. Drop the originals in `media/src/<Category Name>/`.
+2. Add an entry to `src/data/media-sources.json` (slug, category, optional crop
+   or trim).
+3. Add the slug plus a caption and alt text to `src/data/minerals.json` or
+   `src/data/projects.json`.
+4. `npm run media && npm run build`.
 
-All 26 project photos live in `images/projects/`. Originals were extracted from the company profile doc and resized for web. Replace any of them — keep the same filename — to update the site.
+Images come out as AVIF + WebP + JPEG at 400/800/1200px, never upscaled past the
+source. Videos come out as H.264 MP4 capped at 720px wide with a poster frame.
 
-## Contact form
+## Deploying
 
-Currently the contact form opens the user's email app pre-filled (`mailto:`). To collect submissions in a database instead, see `SUPABASE-SETUP.md`.
+Cloudflare Pages builds on every push to `main`:
+
+- **Build command:** `node scripts/build.mjs`
+- **Output directory:** `dist`
+- **Functions:** picked up automatically from `functions/`
+
+`_headers` sets caching and security headers. `_redirects` covers the retired
+pages from the previous version of the site.
+
+### Contact form
+
+`functions/api/contact.js` emails submissions via Resend. Set these in
+Cloudflare → Pages → Settings → Variables:
+
+| Variable | Needed | Notes |
+|---|---|---|
+| `RESEND_API_KEY` | yes | Without it the endpoint returns 503 and the form falls back to opening the visitor's mail app, so nothing is lost. |
+| `CONTACT_TO` | no | Defaults to `info@blueraysl.com`. |
+| `CONTACT_FROM` | no | Must be a verified sender on your Resend domain. Defaults to `website@blueraysl.com`. |
 
 ## License
 
-© Blue-Ray (SL) Ltd. All content and project photos are property of the company.
+© Blue-Ray (SL) Ltd. All content and photographs are property of the company.

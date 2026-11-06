@@ -1,0 +1,50 @@
+<!--meta
+{
+  "title": "Construction Projects — Roads, Bridges & Buildings | Blue-Ray (SL) Ltd.",
+  "ogTitle": "Blue-Ray Construction Projects",
+  "description": "A portfolio of roads, bridges, buildings and industrial civil works delivered by Blue-Ray across Sierra Leone — from the Sumbuya–Tormabum corridor to steel workshops and power substation foundations.",
+  "nav": "projects",
+  "breadcrumb": "Projects",
+  "ogImage": "steel-workshop"
+}
+-->
+  <header class="page-hero">
+    <div class="page-hero-bg">
+      <img src="/assets/img/hero/village-road-1400.jpg"
+           srcset="/assets/img/hero/village-road-400.jpg 400w, /assets/img/hero/village-road-800.jpg 800w, /assets/img/hero/village-road-1200.jpg 1200w, /assets/img/hero/village-road-1400.jpg 1400w"
+           sizes="100vw" width="1400" height="789" alt="" fetchpriority="high" decoding="async">
+    </div>
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <span aria-hidden="true">/</span> Projects</nav>
+      <h1>Construction Projects</h1>
+      <p class="hero-sub">
+        Roads, bridges, buildings and civil works delivered across Sierra Leone —
+        from the Sumbuya–Tormabum corridor to industrial substations and steel workshops.
+      </p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="filter-chips reveal" role="group" aria-label="Filter projects by type">
+        <button class="chip active" data-filter="all" aria-pressed="true">All Projects</button>
+        <button class="chip" data-filter="roads" aria-pressed="false">Roads</button>
+        <button class="chip" data-filter="bridges" aria-pressed="false">Bridges &amp; Culverts</button>
+        <button class="chip" data-filter="buildings" aria-pressed="false">Buildings</button>
+        <button class="chip" data-filter="industrial" aria-pressed="false">Industrial / Civil</button>
+      </div>
+
+      <div class="gallery reveal" id="project-gallery">
+        {{projectGrid}}
+      </div>
+      <p class="muted center mt-lg" id="filter-empty" hidden>No projects in this category yet.</p>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container">
+      <h2>Have a similar project?</h2>
+      <p>Whether it's a single bridge or a national programme — we'd like to hear what you're planning.</p>
+      <a href="/contact.html" class="btn btn-primary btn-arrow">Request a Proposal</a>
+    </div>
+  </section>

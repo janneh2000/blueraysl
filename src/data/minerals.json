@@ -1,0 +1,122 @@
+[
+  {
+    "key": "bauxite",
+    "name": "Bauxite Mining and Hauling",
+    "short": "Bauxite",
+    "lead": "Extraction, stockpiling and haulage of bauxite ore through to vessel loading for export.",
+    "body": "Bauxite is the aluminium ore that feeds smelters worldwide, and West Africa holds some of the largest reserves on the continent. Blue-Ray runs the full chain on its bauxite operations: excavation at the face, stockpile management, haulage by our own tipper fleet, and loading onto bulk carriers for shipment.",
+    "hero": "bauxite-vessel-loading",
+    "photos": [
+      { "slug": "bauxite-vessel-loading", "caption": "Bauxite loaded into a bulk carrier by grab crane", "alt": "Grab cranes loading red bauxite ore into the hold of a bulk carrier vessel" },
+      { "slug": "bauxite-excavation", "caption": "Excavator working the bauxite face", "alt": "Tracked excavator digging blasted bauxite rock at an open pit face" },
+      { "slug": "bauxite-stockpile", "caption": "Bauxite stockpile at the mine site", "alt": "Large red bauxite stockpile with site vehicle and crew in the foreground" },
+      { "slug": "bauxite-site-team", "caption": "On site at the stockpile", "alt": "Blue-Ray team member standing in front of a bauxite stockpile" }
+    ],
+    "videos": [
+      { "slug": "bauxite-loading", "caption": "Wheel loader filling tipper trucks at the pit", "alt": "Wheel loader filling a Howo tipper truck with bauxite ore" },
+      { "slug": "bauxite-conveyor", "caption": "Conveyor discharging ore to the stockpile", "alt": "Conveyor belt discharging bauxite ore onto a growing stockpile" }
+    ]
+  },
+  {
+    "key": "gold",
+    "name": "Gold Mining and Trading",
+    "short": "Gold",
+    "lead": "Alluvial gold recovery, on-site assay and weighing, and export to licensed buyers.",
+    "body": "Blue-Ray works licensed alluvial gold concessions across the Sierra Leone greenstone belt. Recovered gold is washed, concentrated, weighed and recorded on site before it moves through licensed export channels. Every parcel is documented from pit to buyer.",
+    "hero": "gold-flakes-bright",
+    "photos": [
+      { "slug": "gold-flakes-bright", "caption": "Coarse gold flake, washed and dried", "alt": "A large pile of bright coarse gold flake on paper" },
+      { "slug": "gold-nuggets-pan", "caption": "Gold nuggets in the pan", "alt": "Rough gold nuggets of varying size resting in a metal pan" },
+      { "slug": "gold-weighing-scale", "caption": "Weighing a parcel on the digital scale", "alt": "Gold dust being weighed on a digital scale beside handwritten records" },
+      { "slug": "gold-assay-record", "caption": "Parcel weights recorded by hand", "alt": "A mound of fine gold dust on paper covered in handwritten weight records" },
+      { "slug": "gold-flakes-coarse", "caption": "Coarse flake before parcelling", "alt": "Coarse gold flake spread across lined paper" },
+      { "slug": "gold-dust-bowl", "caption": "Fine gold concentrate", "alt": "Fine gold dust collected in a white bowl" },
+      { "slug": "gold-grain-paper", "caption": "Granular gold, hand-sorted", "alt": "Granular gold spread on lined paper" },
+      { "slug": "gold-flakes-lined", "caption": "Flake gold from the wash plant", "alt": "Gold flake on lined notebook paper" },
+      { "slug": "gold-dust-parcel", "caption": "A made-up parcel", "alt": "Gold dust gathered into a parcel on folded paper" },
+      { "slug": "gold-dust-fine", "caption": "Fine gold dust", "alt": "Very fine gold dust on white paper" },
+      { "slug": "gold-dust-paper", "caption": "Recovered gold, pre-weigh", "alt": "Gold dust and small flake on a sheet of paper before weighing" }
+    ],
+    "videos": [
+      { "slug": "gold-pit", "caption": "Excavator working an alluvial gold pit", "alt": "Excavator working wet ground at an alluvial gold pit with hills behind" }
+    ]
+  },
+  {
+    "key": "diamonds",
+    "name": "Diamonds Mining and Trading",
+    "short": "Diamonds",
+    "lead": "Alluvial rough diamond recovery, sorting and parcelling for licensed export.",
+    "body": "Sierra Leone is one of the world's premier sources of alluvial rough diamonds. Blue-Ray recovers, sorts and parcels rough stones, recording carat weights at the point of sorting. Stones move only through licensed, Kimberley-compliant channels to vetted international buyers.",
+    "hero": "diamond-parcel-weights",
+    "photos": [
+      { "slug": "diamond-parcel-weights", "caption": "Parcel with carat weights as recorded on sorting", "alt": "Five rough diamonds laid on paper, each annotated by hand with its carat weight" },
+      { "slug": "diamond-octahedron", "caption": "Octahedral rough crystal", "alt": "A well-formed pale octahedral rough diamond crystal" },
+      { "slug": "diamond-rough-large", "caption": "Large single rough stone", "alt": "A large rough diamond resting on white cloth" },
+      { "slug": "diamond-loupe", "caption": "Yellow rough under the loupe", "alt": "A yellow-tinted rough diamond viewed through a jeweller's loupe" },
+      { "slug": "diamond-rough-yellow", "caption": "Pale yellow rough", "alt": "A pale yellow rough diamond on a white surface" },
+      { "slug": "diamond-crystal-small", "caption": "Small gem-quality crystal", "alt": "A small clear octahedral diamond crystal on white paper" },
+      { "slug": "diamond-rough-clear", "caption": "Clear rough stone", "alt": "A clear rough diamond resting on white fabric" },
+      { "slug": "diamond-parcel-sorted", "caption": "Sorted parcel on paper", "alt": "A parcel of small rough diamonds sorted on white paper" },
+      { "slug": "diamond-parcel-dated", "caption": "Dated parcel from the sorting table", "alt": "A rough diamond parcel on paper dated by hand" },
+      { "slug": "diamond-parcel-mixed", "caption": "Mixed-size rough parcel", "alt": "A round parcel of mixed-size rough diamonds" },
+      { "slug": "diamond-parcel-tray", "caption": "Parcel on the sorting tray", "alt": "Rough diamonds including a coloured stone on a dark sorting tray" }
+    ],
+    "videos": []
+  },
+  {
+    "key": "hmc",
+    "name": "High Mineral Concentrations (HMC)",
+    "short": "HMC",
+    "lead": "Gravity separation of heavy mineral sands into saleable concentrate.",
+    "body": "Heavy mineral concentrate — the rutile, ilmenite and zircon fraction of mineral sands — is separated on site using spiral concentrator banks. Feed is pumped from the working face, run through the spirals, and the concentrate is stockpiled for onward sale. This is the most capital-intensive part of our mining operation and the clearest proof of processing capability.",
+    "hero": "hmc-spiral-plant",
+    "photos": [
+      { "slug": "hmc-spiral-plant", "caption": "Spiral concentrator bank in operation", "alt": "A multi-level spiral concentrator plant with crew in high-visibility clothing" },
+      { "slug": "hmc-plant-riverside", "caption": "Processing plant on the river", "alt": "Spiral concentrator plant installed beside a river with feed pipework" },
+      { "slug": "hmc-stockpile", "caption": "Heavy mineral concentrate stockpile", "alt": "A large dark heavy mineral concentrate stockpile on a worked site" },
+      { "slug": "hmc-conveyor-stockpile", "caption": "Concentrate stacked off the conveyor", "alt": "Conical stockpile of dark heavy mineral concentrate beside a conveyor" }
+    ],
+    "videos": []
+  },
+  {
+    "key": "sand",
+    "name": "Sand Mining and Trading",
+    "short": "Sand",
+    "lead": "River and pit sand extraction, washing and supply to construction projects.",
+    "body": "Construction sand is the quiet backbone of every road, bridge and building programme in the country. Blue-Ray extracts, washes and stockpiles river and pit sand, supplying our own construction projects and selling graded sand to third-party contractors.",
+    "hero": null,
+    "photos": [],
+    "videos": [
+      { "slug": "sand-dredge", "caption": "Dredge discharging sand slurry to the settling pond", "alt": "A dredge pipe discharging a heavy stream of sand and water into a settling pond" },
+      { "slug": "sand-river", "caption": "River sand extraction and stockpiles", "alt": "Sand stockpiles on a river bank at an active extraction site" }
+    ]
+  },
+  {
+    "key": "haulage",
+    "name": "Hauling Bauxite, Granite and Sand Minerals",
+    "short": "Haulage",
+    "lead": "Tipper fleet moving bauxite, granite and sand between pit, plant and port.",
+    "body": "Mining is only as good as the haulage behind it. Blue-Ray runs and contracts a fleet of heavy tipper trucks that move bauxite, crushed granite and sand from the working face to the processing plant, the stockpile and the port. The same fleet carries aggregate to our construction sites.",
+    "hero": "haul-fleet-crew",
+    "photos": [
+      { "slug": "haul-fleet-crew", "caption": "Tipper fleet ready for dispatch", "alt": "A line of white heavy tipper trucks with two men standing alongside" },
+      { "slug": "haul-tipper-front", "caption": "Heavy tipper on the haul road", "alt": "A white Howo heavy tipper truck at the head of a parked fleet" },
+      { "slug": "haul-fleet-line", "caption": "Fleet yard", "alt": "A row of heavy tipper trucks parked in a yard" },
+      { "slug": "haul-tractor-units", "caption": "Tractor units between runs", "alt": "Two green Howo tractor units parked on red laterite ground" }
+    ],
+    "videos": []
+  },
+  {
+    "key": "coltan",
+    "name": "Coltan",
+    "short": "Coltan",
+    "lead": "Columbite-tantalite recovery and concentration — the tantalum feedstock for electronics.",
+    "body": "Coltan is the ore behind tantalum capacitors, and demand tracks global electronics manufacturing. Blue-Ray recovers and concentrates coltan from licensed ground, hand-sorting ore and washing concentrate to grade before sale.",
+    "hero": "coltan-ore",
+    "photos": [
+      { "slug": "coltan-ore", "caption": "Hand-sorted coltan ore", "alt": "Dark angular pieces of coltan ore sorted by hand" },
+      { "slug": "coltan-concentrate", "caption": "Coltan concentrate after washing", "alt": "Washed coltan concentrate in a pan showing dark heavy grains" }
+    ],
+    "videos": []
+  }
+]

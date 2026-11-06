@@ -1,0 +1,1058 @@
+{
+  "photos": {
+    "bauxite-vessel-loading": {
+      "slug": "bauxite-vessel-loading",
+      "cat": "bauxite",
+      "width": 640,
+      "height": 426,
+      "sizes": [
+        400,
+        640
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/bauxite/bauxite-vessel-loading"
+    },
+    "bauxite-stockpile": {
+      "slug": "bauxite-stockpile",
+      "cat": "bauxite",
+      "width": 1080,
+      "height": 810,
+      "sizes": [
+        400,
+        800,
+        1080
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/bauxite/bauxite-stockpile"
+    },
+    "bauxite-excavation": {
+      "slug": "bauxite-excavation",
+      "cat": "bauxite",
+      "width": 1020,
+      "height": 765,
+      "sizes": [
+        400,
+        800,
+        1020
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/bauxite/bauxite-excavation"
+    },
+    "bauxite-site-team": {
+      "slug": "bauxite-site-team",
+      "cat": "bauxite",
+      "width": 810,
+      "height": 1080,
+      "sizes": [
+        400,
+        800,
+        810
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/bauxite/bauxite-site-team"
+    },
+    "coltan-ore": {
+      "slug": "coltan-ore",
+      "cat": "coltan",
+      "width": 486,
+      "height": 1080,
+      "sizes": [
+        400,
+        486
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/coltan/coltan-ore"
+    },
+    "coltan-concentrate": {
+      "slug": "coltan-concentrate",
+      "cat": "coltan",
+      "width": 497,
+      "height": 879,
+      "sizes": [
+        400,
+        497
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/coltan/coltan-concentrate"
+    },
+    "diamond-parcel-tray": {
+      "slug": "diamond-parcel-tray",
+      "cat": "diamonds",
+      "width": 497,
+      "height": 667,
+      "sizes": [
+        400,
+        497
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/diamonds/diamond-parcel-tray"
+    },
+    "diamond-parcel-mixed": {
+      "slug": "diamond-parcel-mixed",
+      "cat": "diamonds",
+      "width": 497,
+      "height": 667,
+      "sizes": [
+        400,
+        497
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/diamonds/diamond-parcel-mixed"
+    },
+    "diamond-parcel-sorted": {
+      "slug": "diamond-parcel-sorted",
+      "cat": "diamonds",
+      "width": 459,
+      "height": 1020,
+      "sizes": [
+        400,
+        459
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/diamonds/diamond-parcel-sorted"
+    },
+    "diamond-parcel-dated": {
+      "slug": "diamond-parcel-dated",
+      "cat": "diamonds",
+      "width": 459,
+      "height": 1020,
+      "sizes": [
+        400,
+        459
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/diamonds/diamond-parcel-dated"
+    },
+    "diamond-rough-large": {
+      "slug": "diamond-rough-large",
+      "cat": "diamonds",
+      "width": 498,
+      "height": 1080,
+      "sizes": [
+        400,
+        498
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/diamonds/diamond-rough-large"
+    },
+    "diamond-octahedron": {
+      "slug": "diamond-octahedron",
+      "cat": "diamonds",
+      "width": 480,
+      "height": 480,
+      "sizes": [
+        400,
+        480
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/diamonds/diamond-octahedron"
+    },
+    "diamond-loupe": {
+      "slug": "diamond-loupe",
+      "cat": "diamonds",
+      "width": 1040,
+      "height": 780,
+      "sizes": [
+        400,
+        800,
+        1040
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/diamonds/diamond-loupe"
+    },
+    "diamond-crystal-small": {
+      "slug": "diamond-crystal-small",
+      "cat": "diamonds",
+      "width": 780,
+      "height": 1040,
+      "sizes": [
+        400,
+        780
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/diamonds/diamond-crystal-small"
+    },
+    "diamond-rough-yellow": {
+      "slug": "diamond-rough-yellow",
+      "cat": "diamonds",
+      "width": 780,
+      "height": 1040,
+      "sizes": [
+        400,
+        780
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/diamonds/diamond-rough-yellow"
+    },
+    "diamond-rough-clear": {
+      "slug": "diamond-rough-clear",
+      "cat": "diamonds",
+      "width": 739,
+      "height": 573,
+      "sizes": [
+        400,
+        739
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/diamonds/diamond-rough-clear"
+    },
+    "diamond-parcel-weights": {
+      "slug": "diamond-parcel-weights",
+      "cat": "diamonds",
+      "width": 619,
+      "height": 456,
+      "sizes": [
+        400,
+        619
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/diamonds/diamond-parcel-weights"
+    },
+    "gold-dust-paper": {
+      "slug": "gold-dust-paper",
+      "cat": "gold",
+      "width": 474,
+      "height": 758,
+      "sizes": [
+        400,
+        474
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/gold/gold-dust-paper"
+    },
+    "gold-nuggets-pan": {
+      "slug": "gold-nuggets-pan",
+      "cat": "gold",
+      "width": 720,
+      "height": 720,
+      "sizes": [
+        400,
+        720
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/gold/gold-nuggets-pan"
+    },
+    "gold-dust-fine": {
+      "slug": "gold-dust-fine",
+      "cat": "gold",
+      "width": 485,
+      "height": 527,
+      "sizes": [
+        400,
+        485
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/gold/gold-dust-fine"
+    },
+    "gold-flakes-lined": {
+      "slug": "gold-flakes-lined",
+      "cat": "gold",
+      "width": 520,
+      "height": 1040,
+      "sizes": [
+        400,
+        520
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/gold/gold-flakes-lined"
+    },
+    "gold-dust-parcel": {
+      "slug": "gold-dust-parcel",
+      "cat": "gold",
+      "width": 468,
+      "height": 1040,
+      "sizes": [
+        400,
+        468
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/gold/gold-dust-parcel"
+    },
+    "gold-flakes-bright": {
+      "slug": "gold-flakes-bright",
+      "cat": "gold",
+      "width": 780,
+      "height": 1040,
+      "sizes": [
+        400,
+        780
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/gold/gold-flakes-bright"
+    },
+    "gold-flakes-coarse": {
+      "slug": "gold-flakes-coarse",
+      "cat": "gold",
+      "width": 780,
+      "height": 1040,
+      "sizes": [
+        400,
+        780
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/gold/gold-flakes-coarse"
+    },
+    "gold-dust-bowl": {
+      "slug": "gold-dust-bowl",
+      "cat": "gold",
+      "width": 780,
+      "height": 1040,
+      "sizes": [
+        400,
+        780
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/gold/gold-dust-bowl"
+    },
+    "gold-grain-paper": {
+      "slug": "gold-grain-paper",
+      "cat": "gold",
+      "width": 780,
+      "height": 1040,
+      "sizes": [
+        400,
+        780
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/gold/gold-grain-paper"
+    },
+    "gold-weighing-scale": {
+      "slug": "gold-weighing-scale",
+      "cat": "gold",
+      "width": 780,
+      "height": 1040,
+      "sizes": [
+        400,
+        780
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/gold/gold-weighing-scale"
+    },
+    "gold-assay-record": {
+      "slug": "gold-assay-record",
+      "cat": "gold",
+      "width": 780,
+      "height": 1040,
+      "sizes": [
+        400,
+        780
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/gold/gold-assay-record"
+    },
+    "haul-fleet-line": {
+      "slug": "haul-fleet-line",
+      "cat": "haulage",
+      "width": 1000,
+      "height": 563,
+      "sizes": [
+        400,
+        800,
+        1000
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/haulage/haul-fleet-line"
+    },
+    "haul-tipper-front": {
+      "slug": "haul-tipper-front",
+      "cat": "haulage",
+      "width": 1024,
+      "height": 768,
+      "sizes": [
+        400,
+        800,
+        1024
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/haulage/haul-tipper-front"
+    },
+    "haul-tractor-units": {
+      "slug": "haul-tractor-units",
+      "cat": "haulage",
+      "width": 765,
+      "height": 1020,
+      "sizes": [
+        400,
+        765
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/haulage/haul-tractor-units"
+    },
+    "haul-fleet-crew": {
+      "slug": "haul-fleet-crew",
+      "cat": "haulage",
+      "width": 1024,
+      "height": 768,
+      "sizes": [
+        400,
+        800,
+        1024
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/haulage/haul-fleet-crew"
+    },
+    "hmc-spiral-plant": {
+      "slug": "hmc-spiral-plant",
+      "cat": "hmc",
+      "width": 1080,
+      "height": 607,
+      "sizes": [
+        400,
+        800,
+        1080
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/hmc/hmc-spiral-plant"
+    },
+    "hmc-stockpile": {
+      "slug": "hmc-stockpile",
+      "cat": "hmc",
+      "width": 1000,
+      "height": 467,
+      "sizes": [
+        400,
+        800,
+        1000
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/hmc/hmc-stockpile"
+    },
+    "hmc-plant-riverside": {
+      "slug": "hmc-plant-riverside",
+      "cat": "hmc",
+      "width": 1000,
+      "height": 467,
+      "sizes": [
+        400,
+        800,
+        1000
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/hmc/hmc-plant-riverside"
+    },
+    "hmc-conveyor-stockpile": {
+      "slug": "hmc-conveyor-stockpile",
+      "cat": "hmc",
+      "width": 1000,
+      "height": 467,
+      "sizes": [
+        400,
+        800,
+        1000
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/hmc/hmc-conveyor-stockpile"
+    },
+    "bridge-construction": {
+      "slug": "bridge-construction",
+      "cat": "hero",
+      "width": 1920,
+      "height": 1081,
+      "sizes": [
+        400,
+        800,
+        1200,
+        1400
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/hero/bridge-construction"
+    },
+    "road-equipment": {
+      "slug": "road-equipment",
+      "cat": "hero",
+      "width": 1080,
+      "height": 607,
+      "sizes": [
+        400,
+        800,
+        1080
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/hero/road-equipment"
+    },
+    "village-road": {
+      "slug": "village-road",
+      "cat": "hero",
+      "width": 1920,
+      "height": 1082,
+      "sizes": [
+        400,
+        800,
+        1200,
+        1400
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/hero/village-road"
+    },
+    "logo-small": {
+      "slug": "logo-small",
+      "cat": "site",
+      "width": 300,
+      "height": 174,
+      "sizes": [
+        300
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/site/logo-small"
+    },
+    "concentrate-pan": {
+      "slug": "concentrate-pan",
+      "cat": "mining",
+      "width": 498,
+      "height": 970,
+      "sizes": [
+        400,
+        498
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/mining/concentrate-pan"
+    },
+    "diamonds-rough": {
+      "slug": "diamonds-rough",
+      "cat": "mining",
+      "width": 459,
+      "height": 1020,
+      "sizes": [
+        400,
+        459
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/mining/diamonds-rough"
+    },
+    "dual-machinery": {
+      "slug": "dual-machinery",
+      "cat": "mining",
+      "width": 368,
+      "height": 408,
+      "sizes": [
+        368
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/mining/dual-machinery"
+    },
+    "excavation-site": {
+      "slug": "excavation-site",
+      "cat": "mining",
+      "width": 540,
+      "height": 960,
+      "sizes": [
+        400,
+        540
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/mining/excavation-site"
+    },
+    "gold-bars-stack": {
+      "slug": "gold-bars-stack",
+      "cat": "mining",
+      "width": 498,
+      "height": 980,
+      "sizes": [
+        400,
+        498
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/mining/gold-bars-stack"
+    },
+    "gold-dust": {
+      "slug": "gold-dust",
+      "cat": "mining",
+      "width": 485,
+      "height": 980,
+      "sizes": [
+        400,
+        485
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/mining/gold-dust"
+    },
+    "gold-nuggets-paper": {
+      "slug": "gold-nuggets-paper",
+      "cat": "mining",
+      "width": 485,
+      "height": 1080,
+      "sizes": [
+        400,
+        485
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/mining/gold-nuggets-paper"
+    },
+    "gold-pile": {
+      "slug": "gold-pile",
+      "cat": "mining",
+      "width": 1040,
+      "height": 780,
+      "sizes": [
+        400,
+        800,
+        1040
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/mining/gold-pile"
+    },
+    "mineral-sorting": {
+      "slug": "mineral-sorting",
+      "cat": "mining",
+      "width": 498,
+      "height": 830,
+      "sizes": [
+        400,
+        498
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/mining/mineral-sorting"
+    },
+    "processing-plant": {
+      "slug": "processing-plant",
+      "cat": "mining",
+      "width": 1280,
+      "height": 894,
+      "sizes": [
+        400,
+        800,
+        1200,
+        1280
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/mining/processing-plant"
+    },
+    "red-earth-stockpile": {
+      "slug": "red-earth-stockpile",
+      "cat": "mining",
+      "width": 1080,
+      "height": 810,
+      "sizes": [
+        400,
+        800,
+        1080
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/mining/red-earth-stockpile"
+    },
+    "slra-signboard": {
+      "slug": "slra-signboard",
+      "cat": "mining",
+      "width": 768,
+      "height": 1024,
+      "sizes": [
+        400,
+        768
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/mining/slra-signboard"
+    },
+    "stockpile-mound": {
+      "slug": "stockpile-mound",
+      "cat": "mining",
+      "width": 540,
+      "height": 960,
+      "sizes": [
+        400,
+        540
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/mining/stockpile-mound"
+    },
+    "team-with-loader": {
+      "slug": "team-with-loader",
+      "cat": "mining",
+      "width": 810,
+      "height": 1080,
+      "sizes": [
+        400,
+        800,
+        810
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/mining/team-with-loader"
+    },
+    "bridge-24m": {
+      "slug": "bridge-24m",
+      "cat": "projects",
+      "width": 1400,
+      "height": 788,
+      "sizes": [
+        400,
+        800,
+        1200,
+        1400
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/projects/bridge-24m"
+    },
+    "bridge-approach": {
+      "slug": "bridge-approach",
+      "cat": "projects",
+      "width": 1400,
+      "height": 789,
+      "sizes": [
+        400,
+        800,
+        1200,
+        1400
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/projects/bridge-approach"
+    },
+    "bridge-backfill": {
+      "slug": "bridge-backfill",
+      "cat": "projects",
+      "width": 1400,
+      "height": 789,
+      "sizes": [
+        400,
+        800,
+        1200,
+        1400
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/projects/bridge-backfill"
+    },
+    "bridge-mameima": {
+      "slug": "bridge-mameima",
+      "cat": "projects",
+      "width": 1400,
+      "height": 789,
+      "sizes": [
+        400,
+        800,
+        1200,
+        1400
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/projects/bridge-mameima"
+    },
+    "civil-works": {
+      "slug": "civil-works",
+      "cat": "projects",
+      "width": 1056,
+      "height": 1200,
+      "sizes": [
+        400,
+        800,
+        1056
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/projects/civil-works"
+    },
+    "control-building": {
+      "slug": "control-building",
+      "cat": "projects",
+      "width": 1068,
+      "height": 1080,
+      "sizes": [
+        400,
+        800,
+        1068
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/projects/control-building"
+    },
+    "culvert-completed": {
+      "slug": "culvert-completed",
+      "cat": "projects",
+      "width": 1400,
+      "height": 789,
+      "sizes": [
+        400,
+        800,
+        1200,
+        1400
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/projects/culvert-completed"
+    },
+    "equipment-foundation": {
+      "slug": "equipment-foundation",
+      "cat": "projects",
+      "width": 1074,
+      "height": 804,
+      "sizes": [
+        400,
+        800,
+        1074
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/projects/equipment-foundation"
+    },
+    "feeder-road": {
+      "slug": "feeder-road",
+      "cat": "projects",
+      "width": 1400,
+      "height": 789,
+      "sizes": [
+        400,
+        800,
+        1200,
+        1400
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/projects/feeder-road"
+    },
+    "fence-dormitory": {
+      "slug": "fence-dormitory",
+      "cat": "projects",
+      "width": 1068,
+      "height": 1194,
+      "sizes": [
+        400,
+        800,
+        1068
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/projects/fence-dormitory"
+    },
+    "foundations": {
+      "slug": "foundations",
+      "cat": "projects",
+      "width": 954,
+      "height": 1188,
+      "sizes": [
+        400,
+        800,
+        954
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/projects/foundations"
+    },
+    "office-building": {
+      "slug": "office-building",
+      "cat": "projects",
+      "width": 1062,
+      "height": 1116,
+      "sizes": [
+        400,
+        800,
+        1062
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/projects/office-building"
+    },
+    "road-01": {
+      "slug": "road-01",
+      "cat": "projects",
+      "width": 1080,
+      "height": 607,
+      "sizes": [
+        400,
+        800,
+        1080
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/projects/road-01"
+    },
+    "road-02": {
+      "slug": "road-02",
+      "cat": "projects",
+      "width": 1080,
+      "height": 607,
+      "sizes": [
+        400,
+        800,
+        1080
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/projects/road-02"
+    },
+    "road-03": {
+      "slug": "road-03",
+      "cat": "projects",
+      "width": 1080,
+      "height": 607,
+      "sizes": [
+        400,
+        800,
+        1080
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/projects/road-03"
+    },
+    "road-04": {
+      "slug": "road-04",
+      "cat": "projects",
+      "width": 1080,
+      "height": 607,
+      "sizes": [
+        400,
+        800,
+        1080
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/projects/road-04"
+    },
+    "road-05": {
+      "slug": "road-05",
+      "cat": "projects",
+      "width": 1080,
+      "height": 607,
+      "sizes": [
+        400,
+        800,
+        1080
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/projects/road-05"
+    },
+    "road-06": {
+      "slug": "road-06",
+      "cat": "projects",
+      "width": 1080,
+      "height": 607,
+      "sizes": [
+        400,
+        800,
+        1080
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/projects/road-06"
+    },
+    "road-brushing": {
+      "slug": "road-brushing",
+      "cat": "projects",
+      "width": 1080,
+      "height": 1080,
+      "sizes": [
+        400,
+        800,
+        1080
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/projects/road-brushing"
+    },
+    "security-post": {
+      "slug": "security-post",
+      "cat": "projects",
+      "width": 1068,
+      "height": 1158,
+      "sizes": [
+        400,
+        800,
+        1068
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/projects/security-post"
+    },
+    "steel-workshop": {
+      "slug": "steel-workshop",
+      "cat": "projects",
+      "width": 1002,
+      "height": 1122,
+      "sizes": [
+        400,
+        800,
+        1002
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/projects/steel-workshop"
+    },
+    "workshop-exterior": {
+      "slug": "workshop-exterior",
+      "cat": "projects",
+      "width": 1002,
+      "height": 570,
+      "sizes": [
+        400,
+        800,
+        1002
+      ],
+      "orientation": "landscape",
+      "path": "assets/img/projects/workshop-exterior"
+    },
+    "workshop-interior": {
+      "slug": "workshop-interior",
+      "cat": "projects",
+      "width": 1062,
+      "height": 1242,
+      "sizes": [
+        400,
+        800,
+        1062
+      ],
+      "orientation": "portrait",
+      "path": "assets/img/projects/workshop-interior"
+    }
+  },
+  "videos": {
+    "bauxite-loading": {
+      "slug": "bauxite-loading",
+      "cat": "bauxite",
+      "width": 720,
+      "height": 408,
+      "orientation": "landscape",
+      "mp4": "assets/video/bauxite/bauxite-loading.mp4",
+      "poster": "assets/video/bauxite/bauxite-loading-poster.jpg",
+      "bytes_mp4": 1920983
+    },
+    "bauxite-conveyor": {
+      "slug": "bauxite-conveyor",
+      "cat": "bauxite",
+      "width": 640,
+      "height": 352,
+      "orientation": "landscape",
+      "mp4": "assets/video/bauxite/bauxite-conveyor.mp4",
+      "poster": "assets/video/bauxite/bauxite-conveyor-poster.jpg",
+      "bytes_mp4": 1482131
+    },
+    "gold-pit": {
+      "slug": "gold-pit",
+      "cat": "gold",
+      "width": 360,
+      "height": 640,
+      "orientation": "portrait",
+      "mp4": "assets/video/gold/gold-pit.mp4",
+      "poster": "assets/video/gold/gold-pit-poster.jpg",
+      "bytes_mp4": 4269600
+    },
+    "sand-dredge": {
+      "slug": "sand-dredge",
+      "cat": "sand",
+      "width": 360,
+      "height": 640,
+      "orientation": "portrait",
+      "mp4": "assets/video/sand/sand-dredge.mp4",
+      "poster": "assets/video/sand/sand-dredge-poster.jpg",
+      "bytes_mp4": 994341
+    },
+    "sand-river": {
+      "slug": "sand-river",
+      "cat": "sand",
+      "width": 360,
+      "height": 640,
+      "orientation": "portrait",
+      "mp4": "assets/video/sand/sand-river.mp4",
+      "poster": "assets/video/sand/sand-river-poster.jpg",
+      "bytes_mp4": 1829896
+    },
+    "legacy-mining-overview": {
+      "slug": "legacy-mining-overview",
+      "cat": "legacy",
+      "width": 720,
+      "height": 404,
+      "orientation": "landscape",
+      "mp4": "assets/video/legacy/legacy-mining-overview.mp4",
+      "poster": "assets/video/legacy/legacy-mining-overview-poster.jpg",
+      "bytes_mp4": 693375
+    },
+    "legacy-excavation": {
+      "slug": "legacy-excavation",
+      "cat": "legacy",
+      "width": 720,
+      "height": 402,
+      "orientation": "landscape",
+      "mp4": "assets/video/legacy/legacy-excavation.mp4",
+      "poster": "assets/video/legacy/legacy-excavation-poster.jpg",
+      "bytes_mp4": 855162
+    },
+    "legacy-trommel": {
+      "slug": "legacy-trommel",
+      "cat": "legacy",
+      "width": 720,
+      "height": 1276,
+      "orientation": "portrait",
+      "mp4": "assets/video/legacy/legacy-trommel.mp4",
+      "poster": "assets/video/legacy/legacy-trommel-poster.jpg",
+      "bytes_mp4": 1288799
+    }
+  }
+}

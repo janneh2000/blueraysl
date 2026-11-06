@@ -1,0 +1,28 @@
+[
+  { "slug": "bridge-24m", "category": "bridges", "tag": "Bridges", "title": "24-Metre Bridge — Bendu Junction", "caption": "Reinforced concrete bridge along Bendu Jct – Bendu Mameima.", "alt": "A 24-metre reinforced concrete bridge under construction at Bendu Junction" },
+  { "slug": "culvert-completed", "category": "bridges", "tag": "Bridges", "title": "Reinforced Culvert", "caption": "Twin-cell culvert with concrete wing walls.", "alt": "A completed twin-cell reinforced concrete culvert with wing walls" },
+  { "slug": "bridge-approach", "category": "bridges", "tag": "Bridges", "title": "Bridge Approaches Backfilled", "caption": "Khaleh – Tihun feeder road approaches.", "alt": "Backfilled and compacted approaches either side of a new bridge" },
+  { "slug": "bridge-backfill", "category": "bridges", "tag": "Bridges", "title": "Backfilled Pavement", "caption": "Bridge and culvert points along Tihun – Khaleh.", "alt": "Backfilled pavement at a culvert crossing on a rural road" },
+  { "slug": "bridge-mameima", "category": "bridges", "tag": "Bridges", "title": "Bendu Mameima Crossing", "caption": "Concrete crossing with stabilised approaches.", "alt": "A concrete river crossing with stabilised earth approaches" },
+
+  { "slug": "road-02", "category": "roads", "tag": "Roads", "title": "Sumbuya – Tormabum (Gravel)", "caption": "Cambered and side-brushed gravel rehabilitation.", "alt": "A cambered gravel road through bush on the Sumbuya to Tormabum corridor" },
+  { "slug": "road-03", "category": "roads", "tag": "Roads", "title": "Cambered Rural Corridor", "caption": "Drainage-ready cambered surface.", "alt": "A newly cambered rural gravel road with drainage falls" },
+  { "slug": "road-04", "category": "roads", "tag": "Roads", "title": "Village Access Road", "caption": "Compacted gravel through village settlement.", "alt": "A compacted gravel access road running through a village" },
+  { "slug": "road-brushing", "category": "roads", "tag": "Roads", "title": "Right-of-Way Clearance", "caption": "Side-brushing and vegetation control.", "alt": "A road right-of-way cleared of vegetation by side-brushing" },
+  { "slug": "road-05", "category": "roads", "tag": "Roads", "title": "Feeder Road Section", "caption": "Improved access for rural communities.", "alt": "A rehabilitated feeder road with pedestrians walking along it" },
+  { "slug": "road-06", "category": "roads", "tag": "Roads", "title": "Community Through-Road", "caption": "Side-brushed and well-cambered rural road.", "alt": "A well-cambered rural road passing through a community" },
+  { "slug": "feeder-road", "category": "roads", "tag": "Roads", "title": "Feeder Road Compaction", "caption": "Final compacted gravel surface.", "alt": "The final compacted gravel surface of a completed feeder road" },
+  { "slug": "road-01", "category": "roads", "tag": "Roads", "title": "Tropical Corridor Rehabilitation", "caption": "Forest-edge gravel road with side-brushing.", "alt": "A gravel road rehabilitated along the edge of tropical forest" },
+
+  { "slug": "steel-workshop", "category": "buildings", "tag": "Buildings", "title": "Steel Structure Maintenance Workshop", "caption": "Industrial-grade workshop with full electrical fit-out.", "alt": "A large steel-framed maintenance workshop building" },
+  { "slug": "office-building", "category": "buildings", "tag": "Buildings", "title": "Administrative Office Block", "caption": "Single-storey office with ancillary facilities.", "alt": "A completed single-storey administrative office block" },
+  { "slug": "security-post", "category": "buildings", "tag": "Buildings", "title": "Security Post & Generator House", "caption": "Site-perimeter buildings with services.", "alt": "A security post and diesel generator house at a site perimeter" },
+  { "slug": "control-building", "category": "buildings", "tag": "Buildings", "title": "Control Building", "caption": "Long-span control building with steel fit-out.", "alt": "A long-span control building with steel structural fit-out" },
+  { "slug": "workshop-exterior", "category": "buildings", "tag": "Buildings", "title": "Industrial Workshop", "caption": "Heavy-duty workshop building shell.", "alt": "The exterior shell of a heavy-duty industrial workshop" },
+  { "slug": "workshop-interior", "category": "buildings", "tag": "Buildings", "title": "Workshop Interior & Concrete Road", "caption": "Steel-frame interior with concrete access road.", "alt": "The steel-framed interior of a workshop with a concrete access road" },
+  { "slug": "fence-dormitory", "category": "buildings", "tag": "Buildings", "title": "Perimeter Fence & Dormitory", "caption": "Site security fencing and worker dormitory.", "alt": "A site perimeter fence alongside a worker dormitory block" },
+
+  { "slug": "civil-works", "category": "industrial", "tag": "Industrial", "title": "Power Substation Civil Works", "caption": "Structural and foundation works, viewed from above.", "alt": "Aerial view of civil and foundation works at a power substation" },
+  { "slug": "foundations", "category": "industrial", "tag": "Industrial", "title": "Foundations & Reinforcement", "caption": "Concrete bases and circular formwork.", "alt": "Concrete foundation bases with circular formwork and steel reinforcement" },
+  { "slug": "equipment-foundation", "category": "industrial", "tag": "Industrial", "title": "Equipment Foundation", "caption": "Anti-corrosion treated equipment plinth.", "alt": "A finished equipment foundation plinth with anti-corrosion treatment" }
+]

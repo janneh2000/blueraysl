@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+  <meta name="theme-color" content="#0a0e1a">
+  <link rel="canonical" href="{{canonical}}">
+
+  <meta property="og:type" content="{{ogType}}">
+  <meta property="og:site_name" content="Blue-Ray Mining &amp; Construction Co. (SL) Ltd.">
+  <meta property="og:title" content="{{ogTitle}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:url" content="{{canonical}}">
+  <meta property="og:image" content="{{ogImage}}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="675">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ogTitle}}">
+  <meta name="twitter:description" content="{{description}}">
+  <meta name="twitter:image" content="{{ogImage}}">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/site/favicon-32.png">
+  <link rel="icon" href="/assets/img/site/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/assets/img/site/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/css/style.css">
+  <script>document.documentElement.classList.add("js");</script>
+  {{jsonld}}
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand" aria-label="Blue-Ray home">
+        <img src="/assets/img/site/logo-small-300.jpg" alt="" width="300" height="174" decoding="async">
+        <span class="nav-brand-text">
+          Blue-Ray
+          <span>Mining &amp; Construction</span>
+        </span>
+      </a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span aria-hidden="true">☰</span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        {{navLinks}}
+        <li><a href="/contact.html" class="nav-cta{{contactActive}}">Get a Quote</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+{{content}}
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="/assets/img/site/logo-small-300.jpg" alt="Blue-Ray" width="300" height="174" loading="lazy" decoding="async">
+          <p>An indigenous Sierra Leonean construction, mining and engineering company committed to building infrastructure that lasts.</p>
+        </div>
+        <div>
+          <h2 class="footer-heading">Company</h2>
+          <ul>
+            <li><a href="/about.html">About Us</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/mining.html">Mining Operations</a></li>
+            <li><a href="/projects.html">Projects</a></li>
+            <li><a href="/achievements.html">Achievements</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer-heading">Minerals</h2>
+          <ul>
+            <li><a href="/mining.html#bauxite">Bauxite</a></li>
+            <li><a href="/mining.html#gold">Gold</a></li>
+            <li><a href="/mining.html#diamonds">Diamonds</a></li>
+            <li><a href="/mining.html#hmc">Heavy Mineral Concentrate</a></li>
+            <li><a href="/mining.html#sand">Sand</a></li>
+            <li><a href="/mining.html#coltan">Coltan</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer-heading">Get In Touch</h2>
+          <div class="footer-contact-row">
+            <span class="fc-icon" aria-hidden="true">📍</span>
+            <span>5 Fort Street State Avenue, Freetown, Sierra Leone</span>
+          </div>
+          <div class="footer-contact-row">
+            <span class="fc-icon" aria-hidden="true">📞</span>
+            <span><a href="tel:+23278746182">+232-78-746182</a> / <a href="tel:+23288746182">+232-88-746182</a></span>
+          </div>
+          <div class="footer-contact-row">
+            <span class="fc-icon" aria-hidden="true">✉</span>
+            <span><a href="mailto:info@blueraysl.com">info@blueraysl.com</a></span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Blue-Ray (SL) Ltd. All rights reserved.</span>
+        <span>Mining · Construction · General Merchandise</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="wa-fab"
+     href="https://wa.me/23278746182?text=Hello%20Blue-Ray%2C%20I%27d%20like%20to%20enquire%20about%20your%20services."
+     target="_blank" rel="noopener noreferrer"
+     aria-label="Chat with Blue-Ray on WhatsApp">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39-.279 0-1.18-.31-2.7-1.79-1.518-1.48-1.86-2.31-1.86-2.62 0-.43 1.39-1.15 1.39-1.518 0-.124-.124-.249-.249-.404l-1.18-2.07c-.31-.527-.434-.682-.682-.682-.279 0-.682.062-.93.062-.31 0-.806.62-.806 1.21 0 1.79 1.298 3.518 1.487 3.797.124.155 2.452 3.797 6.062 5.224 2.98 1.18 3.589.992 4.23.92.682-.062 1.18-.527 1.518-.992.31-.434.434-.93.434-1.087 0-.155-.063-.31-.124-.404l-1.488-.62c-.31-.124-.434-.155-.589.155zM16.13 4C9.42 4 4 9.42 4 16.13c0 2.36.667 4.58 1.82 6.45L4 28l5.6-1.78c1.79 1.024 3.85 1.61 6.04 1.61h.011c6.71 0 12.13-5.42 12.13-12.13S22.84 4 16.13 4z"/>
+    </svg>
+  </a>
+
+  <script src="/js/main.js" defer></script>
+</body>
+</html>
