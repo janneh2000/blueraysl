@@ -1,78 +1,144 @@
 [
   {
     "featured": true,
-    "year": "2025",
-    "title": "Lot 6 — Malema–Gandorhun Trunk Road",
+    "year": "2020\u20132021",
+    "title": "Lot 6 \u2014 Malema\u2013Gandorhun Trunk Road",
     "image": "slra-signboard",
     "alt": "Sierra Leone Roads Authority project signboard naming Blue-Ray as contractor for Lot 6",
-    "narrative": "The Government of Sierra Leone awarded Blue-Ray Lot 6 of the nationwide Major and Minor Regravelling Works programme: the 37-kilometre Malema–Gandorhun (Sefadu) trunk road. The contract is financed by the Ministry of Finance and supervised by the Sierra Leone Roads Authority. The project signboard on site names Blue-Ray as the contractor.",
+    "narrative": "The Government of Sierra Leone awarded Blue-Ray Lot 6 of the nationwide Major and Minor Regravelling Works programme \u2014 40 lots in total \u2014 covering the 37-kilometre Malema\u2013Gandorhun (Sefadu) trunk road. The project signboard on site names Blue-Ray as the contractor, with the Ministry of Finance financing the work and the Sierra Leone Roads Authority supervising it.",
     "facts": [
-      { "label": "Client", "value": "Government of Sierra Leone" },
-      { "label": "Supervisor", "value": "Sierra Leone Roads Authority (SLRA)" },
-      { "label": "Scope", "value": "37 km trunk road regravelling" },
-      { "label": "Financing", "value": "Ministry of Finance" },
-      { "label": "Contract value", "value": "Le 7,064,194,717.30" }
+      {
+        "label": "Client",
+        "value": "Government of Sierra Leone"
+      },
+      {
+        "label": "Programme",
+        "value": "Major & Minor Regravelling Works, 40 lots nationwide"
+      },
+      {
+        "label": "Supervisor",
+        "value": "Sierra Leone Roads Authority (SLRA)"
+      },
+      {
+        "label": "Scope",
+        "value": "Lot 6 \u2014 37 km trunk road"
+      },
+      {
+        "label": "Financing",
+        "value": "Ministry of Finance (MoF)"
+      },
+      {
+        "label": "Contract value",
+        "value": "Le 7,064,194,717.30"
+      },
+      {
+        "label": "Programme dates",
+        "value": "November 2020 \u2013 April 2021"
+      }
     ]
   },
   {
-    "year": "2024",
     "title": "24-Metre Reinforced Concrete Bridge, Bendu Junction",
     "image": "bridge-24m",
     "alt": "The completed 24-metre reinforced concrete bridge at Bendu Junction",
-    "narrative": "A full reinforced concrete bridge delivered on the Bendu Junction – Bendu Mameima route, including abutments, deck, approach embankments and backfilled pavement either side. The crossing replaced a seasonal bottleneck that cut communities off during the rains.",
+    "narrative": "A full reinforced concrete bridge delivered on the Bendu Junction \u2013 Bendu Mameima route, including abutments, deck, approach embankments and backfilled pavement either side. The crossing replaced a seasonal bottleneck that cut communities off during the rains.",
     "facts": [
-      { "label": "Span", "value": "24 metres" },
-      { "label": "Structure", "value": "Reinforced concrete" },
-      { "label": "Route", "value": "Bendu Junction – Bendu Mameima" },
-      { "label": "Scope", "value": "Bridge, approaches and backfill" }
+      {
+        "label": "Span",
+        "value": "24 metres"
+      },
+      {
+        "label": "Structure",
+        "value": "Reinforced concrete"
+      },
+      {
+        "label": "Route",
+        "value": "Bendu Junction \u2013 Bendu Mameima"
+      },
+      {
+        "label": "Scope",
+        "value": "Bridge, approaches and backfill"
+      }
     ]
   },
   {
-    "year": "2024",
-    "title": "Sumbuya–Tormabum Corridor Rehabilitation",
+    "title": "Sumbuya\u2013Tormabum Corridor Rehabilitation",
     "image": "road-02",
     "alt": "The rehabilitated and cambered gravel surface of the Sumbuya to Tormabum corridor",
-    "narrative": "Gravel rehabilitation of the Sumbuya–Tormabum corridor for the Sierra Leone Roads Authority: side-brushing of the right of way, re-cambering for drainage, and compaction to a finished gravel surface. Related works along Tihun–Khaleh added reinforced culverts and backfilled crossings.",
+    "narrative": "Gravel rehabilitation of the Sumbuya\u2013Tormabum corridor for the Sierra Leone Roads Authority: side-brushing of the right of way, re-cambering for drainage, and compaction to a finished gravel surface. Related works along Tihun\u2013Khaleh added reinforced culverts and backfilled crossings.",
     "facts": [
-      { "label": "Client", "value": "Sierra Leone Roads Authority" },
-      { "label": "Works", "value": "Side-brushing, cambering, compaction" },
-      { "label": "Related", "value": "Tihun–Khaleh culverts and crossings" }
+      {
+        "label": "Client",
+        "value": "Sierra Leone Roads Authority"
+      },
+      {
+        "label": "Works",
+        "value": "Side-brushing, cambering, compaction"
+      },
+      {
+        "label": "Related",
+        "value": "Tihun\u2013Khaleh culverts and crossings"
+      }
     ]
   },
   {
-    "year": "2023",
     "title": "Heavy Mineral Concentrate Processing Plant",
     "image": "hmc-spiral-plant",
     "alt": "A multi-level spiral concentrator plant separating heavy mineral sands",
     "narrative": "Commissioning of a spiral concentrator bank for gravity separation of heavy mineral sands. Feed is pumped from the working face, separated across multiple spiral stages, and stockpiled as saleable concentrate. It is the company's most capital-intensive mining asset and the clearest demonstration of in-country processing capability.",
     "facts": [
-      { "label": "Process", "value": "Gravity separation, spiral concentrators" },
-      { "label": "Output", "value": "Heavy mineral concentrate" },
-      { "label": "Operation", "value": "Riverside plant, continuous feed" }
+      {
+        "label": "Process",
+        "value": "Gravity separation, spiral concentrators"
+      },
+      {
+        "label": "Output",
+        "value": "Heavy mineral concentrate"
+      },
+      {
+        "label": "Operation",
+        "value": "Riverside plant, continuous feed"
+      }
     ]
   },
   {
-    "year": "2023",
-    "title": "Bauxite Export — Vessel Loading",
+    "title": "Bauxite Export \u2014 Vessel Loading",
     "image": "bauxite-vessel-loading",
     "alt": "Grab cranes loading bauxite ore into the hold of a bulk carrier",
-    "narrative": "Bauxite mined, stockpiled and hauled by Blue-Ray loaded into bulk carriers for export. Completing the chain from pit face to ship's hold — excavation, stockpile management, haulage and vessel loading — is what separates a mining contractor from a trader.",
+    "narrative": "Bauxite mined, stockpiled and hauled by Blue-Ray loaded into bulk carriers for export. Completing the chain from pit face to ship's hold \u2014 excavation, stockpile management, haulage and vessel loading \u2014 is what separates a mining contractor from a trader.",
     "facts": [
-      { "label": "Commodity", "value": "Bauxite ore" },
-      { "label": "Chain", "value": "Pit, stockpile, haulage, vessel" },
-      { "label": "Mode", "value": "Bulk carrier, grab crane loading" }
+      {
+        "label": "Commodity",
+        "value": "Bauxite ore"
+      },
+      {
+        "label": "Chain",
+        "value": "Pit, stockpile, haulage, vessel"
+      },
+      {
+        "label": "Mode",
+        "value": "Bulk carrier, grab crane loading"
+      }
     ]
   },
   {
-    "year": "2022",
     "title": "Steel Maintenance Workshop & Industrial Buildings",
     "image": "steel-workshop",
     "alt": "A large steel-framed maintenance workshop with full fit-out",
-    "narrative": "An industrial-grade steel structure delivered with full electrical fit-out, alongside an administrative office block, control building, security post and generator house, perimeter fencing and worker dormitory — a complete site build rather than a single structure.",
+    "narrative": "An industrial-grade steel structure delivered with full electrical fit-out, alongside an administrative office block, control building, security post and generator house, perimeter fencing and worker dormitory \u2014 a complete site build rather than a single structure.",
     "facts": [
-      { "label": "Structure", "value": "Steel frame, industrial grade" },
-      { "label": "Scope", "value": "Workshop, offices, control building, dormitory" },
-      { "label": "Services", "value": "Full electrical fit-out" }
+      {
+        "label": "Structure",
+        "value": "Steel frame, industrial grade"
+      },
+      {
+        "label": "Scope",
+        "value": "Workshop, offices, control building, dormitory"
+      },
+      {
+        "label": "Services",
+        "value": "Full electrical fit-out"
+      }
     ]
   },
   {
@@ -82,9 +148,18 @@
     "alt": "The Blue-Ray site team standing with a wheel loader",
     "narrative": "Blue-Ray (SL) Ltd. was incorporated and registered with the Government of the Republic of Sierra Leone in 2016 as a Premier Company, on the conviction that Sierra Leone's infrastructure should be built by Sierra Leoneans, backed by the best partners available internationally.",
     "facts": [
-      { "label": "Registered", "value": "2016, Government of Sierra Leone" },
-      { "label": "Status", "value": "Indigenous Premier Company" },
-      { "label": "Headquarters", "value": "Freetown, Sierra Leone" }
+      {
+        "label": "Registered",
+        "value": "2016, Government of Sierra Leone"
+      },
+      {
+        "label": "Status",
+        "value": "Indigenous Premier Company"
+      },
+      {
+        "label": "Headquarters",
+        "value": "Freetown, Sierra Leone"
+      }
     ]
   }
 ]

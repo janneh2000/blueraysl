@@ -118,7 +118,7 @@ function achievementList() {
     ${picture(a.image, { sizes: "(max-width: 900px) 92vw, 45vw", alt: a.alt })}
   </div>
   <div class="achievement-body">
-    <span class="achievement-year">${esc(a.year)}</span>
+    ${a.year ? `<span class="achievement-year">${esc(a.year)}</span>` : ""}
     <h3>${esc(a.title)}</h3>
     <p>${esc(a.narrative)}</p>
     <dl class="achievement-meta">
