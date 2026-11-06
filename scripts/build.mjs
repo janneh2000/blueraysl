@@ -8,6 +8,7 @@
  */
 import { readFileSync, writeFileSync, mkdirSync, cpSync, rmSync, readdirSync, existsSync } from "node:fs";
 import { join, dirname, basename } from "node:path";
+import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -218,6 +219,34 @@ function jsonLd(meta) {
   return `<script type="application/ld+json">${JSON.stringify(graph.length === 1 ? graph[0] : graph)}</script>`;
 }
 
+/* ---------- fingerprinting ----------
+   CSS and JS are the files that actually change between deploys. Serving them
+   under a fixed name with a long cache means a fix can sit invisible in
+   browsers for days, so their names carry a content hash and the cache can be
+   immutable. (Media under /assets is named by slug and width instead; to
+   replace a photo, give it a new slug — see the README.) */
+
+const fingerprints = new Map();
+
+function fingerprint(relPath) {
+  const buf = readFileSync(join(ROOT, relPath));
+  const hash = createHash("sha256").update(buf).digest("hex").slice(0, 10);
+  const base = basename(relPath);
+  const dot = base.lastIndexOf(".");
+  const hashed = `${base.slice(0, dot)}.${hash}${base.slice(dot)}`;
+  const dir = dirname(relPath);
+  const outRel = `${dir}/${hashed}`;
+  mkdirSync(join(DIST, dir), { recursive: true });
+  writeFileSync(join(DIST, outRel), buf);
+  fingerprints.set(`/${relPath}`, `/${outRel}`);
+  return outRel;
+}
+
+function applyFingerprints(html) {
+  for (const [from, to] of fingerprints) html = html.split(from).join(to);
+  return html;
+}
+
 /* ---------- page rendering ---------- */
 
 function navLinks(active) {
@@ -264,6 +293,8 @@ function render(file) {
     .replace("{{contactActive}}", meta.nav === "contact" ? " active" : "")
     .replace("{{jsonld}}", jsonLd(meta));
 
+  html = applyFingerprints(html);
+
   mkdirSync(DIST, { recursive: true });
   writeFileSync(join(DIST, out), html);
   return { out, bytes: Buffer.byteLength(html) };
@@ -290,11 +321,16 @@ ${urls}
 rmSync(DIST, { recursive: true, force: true });
 mkdirSync(DIST, { recursive: true });
 
+// Hash CSS and JS before rendering, so pages reference the hashed names.
+for (const f of ["css/style.css", "js/head.js", "js/main.js"]) {
+  if (existsSync(join(ROOT, f))) fingerprint(f);
+}
+
 const pages = readdirSync(join(ROOT, "src/pages")).filter((f) => f.endsWith(".html")).sort();
 const built = pages.map(render);
 
-for (const dir of ["assets", "css", "js"]) {
-  if (existsSync(join(ROOT, dir))) cpSync(join(ROOT, dir), join(DIST, dir), { recursive: true });
+if (existsSync(join(ROOT, "assets"))) {
+  cpSync(join(ROOT, "assets"), join(DIST, "assets"), { recursive: true });
 }
 for (const f of ["robots.txt", "_headers", "_redirects", "site.webmanifest"]) {
   if (existsSync(join(ROOT, f))) cpSync(join(ROOT, f), join(DIST, f));
@@ -304,6 +340,8 @@ writeFileSync(join(DIST, "sitemap.xml"), sitemap(pages.filter((p) => p !== "404.
 console.log("built:");
 for (const b of built) console.log(`   ${b.out.padEnd(22)} ${(b.bytes / 1024).toFixed(1)} KB`);
 console.log(`   sitemap.xml`);
+console.log("fingerprinted:");
+for (const [from, to] of fingerprints) console.log(`   ${from}  ->  ${to}`);
 
 if (warnings.length) {
   console.log(`\n${warnings.length} warning(s):`);

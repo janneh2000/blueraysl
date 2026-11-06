@@ -7,17 +7,18 @@
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   Content-Security-Policy: default-src 'self'; img-src 'self' data:; media-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; frame-src https://www.openstreetmap.org; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'
 
-# Fingerprinted media never changes under the same name — cache it hard.
+# Media is named by slug and width; replacing a photo means a new slug.
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
+# CSS and JS filenames carry a content hash, so they can never go stale.
 /css/*
-  Cache-Control: public, max-age=604800, must-revalidate
+  Cache-Control: public, max-age=31536000, immutable
 
 /js/*
-  Cache-Control: public, max-age=604800, must-revalidate
+  Cache-Control: public, max-age=31536000, immutable
 
-# HTML should revalidate so content edits go live immediately.
+# HTML revalidates every time, so a content edit is live immediately.
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
 

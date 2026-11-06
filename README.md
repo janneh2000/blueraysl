@@ -59,6 +59,14 @@ Cloudflare Pages builds on every push to `main`:
 `_headers` sets caching and security headers. `_redirects` covers the retired
 pages from the previous version of the site.
 
+**Cache busting.** The build writes `css/style.<hash>.css` and
+`js/*.<hash>.js` and rewrites the references, so CSS and JS are cached
+immutably and a change always reaches browsers on the next load. Media under
+`assets/` is named by slug and width rather than content, and is also cached
+immutably — so **to replace a photo, give it a new slug** in
+`src/data/media-sources.json`. Overwriting one in place would leave browsers
+showing the old image for up to a year.
+
 ### Contact form
 
 `functions/api/contact.js` emails submissions via Resend. Set these in
