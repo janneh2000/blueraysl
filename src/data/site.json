@@ -6,7 +6,6 @@
   "locale": "en",
   "founded": "2016",
   "description": "Blue-Ray (SL) Ltd. is an indigenous Sierra Leonean construction, mining and engineering company. Roads, bridges and buildings for government clients, and licensed mining and export of bauxite, gold, diamonds, coltan, heavy mineral concentrate and sand.",
-
   "contact": {
     "addressLine1": "5 Fort Street State Avenue",
     "addressLine2": "Freetown, Sierra Leone",
@@ -19,34 +18,79 @@
     "emailPrimary": "info@blueraysl.com",
     "emailMd": "md@blueraysl.com",
     "emailBackup": "blueraysl.co@gmail.com",
-    "hoursLine1": "Monday – Friday",
-    "hoursLine2": "8:30 AM – 5:30 PM (GMT)",
+    "hoursLine1": "Monday \u2013 Friday",
+    "hoursLine2": "8:30 AM \u2013 5:30 PM (GMT)",
     "lat": "8.4855",
     "lng": "-13.2340"
   },
-
   "stats": [
-    { "value": 9, "suffix": "+", "label": "Years In Operation" },
-    { "value": 25, "suffix": "+", "label": "Projects Delivered" },
-    { "value": 7, "suffix": "", "label": "Mineral Streams" },
-    { "value": 6, "suffix": "+", "label": "Government Clients" }
+    {
+      "value": 9,
+      "suffix": "+",
+      "label": "Years In Operation"
+    },
+    {
+      "value": 25,
+      "suffix": "+",
+      "label": "Projects Delivered"
+    },
+    {
+      "value": 7,
+      "suffix": "",
+      "label": "Mineral Streams"
+    },
+    {
+      "value": 6,
+      "suffix": "+",
+      "label": "Government Clients"
+    }
   ],
-
   "nav": [
-    { "href": "index.html", "label": "Home", "key": "home" },
-    { "href": "about.html", "label": "About", "key": "about" },
-    { "href": "services.html", "label": "Services", "key": "services" },
-    { "href": "mining.html", "label": "Mining", "key": "mining" },
-    { "href": "projects.html", "label": "Projects", "key": "projects" },
-    { "href": "achievements.html", "label": "Achievements", "key": "achievements" }
+    {
+      "href": "/",
+      "label": "Home",
+      "key": "home"
+    },
+    {
+      "href": "/about",
+      "label": "About",
+      "key": "about"
+    },
+    {
+      "href": "/services",
+      "label": "Services",
+      "key": "services"
+    },
+    {
+      "href": "/mining",
+      "label": "Mining",
+      "key": "mining"
+    },
+    {
+      "href": "/projects",
+      "label": "Projects",
+      "key": "projects"
+    },
+    {
+      "href": "/achievements",
+      "label": "Achievements",
+      "key": "achievements"
+    }
   ],
-
   "partners": [
-    { "name": "PRAETORIAN Global Group", "loc": "Sweden" },
-    { "name": "FIRST International Bank Nigeria (SL) Ltd.", "loc": "Freetown, Sierra Leone" },
-    { "name": "IDEFENZ Company Limited", "loc": "Kuala Lumpur, Malaysia" }
+    {
+      "name": "PRAETORIAN Global Group",
+      "loc": "Sweden"
+    },
+    {
+      "name": "FIRST International Bank Nigeria (SL) Ltd.",
+      "loc": "Freetown, Sierra Leone"
+    },
+    {
+      "name": "IDEFENZ Company Limited",
+      "loc": "Kuala Lumpur, Malaysia"
+    }
   ],
-
   "clients": [
     "Ministry of Health & Sanitation",
     "Ministry of Finance & Economic Development",
@@ -55,7 +99,6 @@
     "Sierra Leone Roads Authority (SLRA)",
     "National Commission for Social Action (NaCSA)"
   ],
-
   "leadership": [
     {
       "initials": "HB",

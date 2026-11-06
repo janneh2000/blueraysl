@@ -222,7 +222,7 @@ function jsonLd(meta) {
 
 function navLinks(active) {
   return site.nav.map((n) =>
-    `<li><a href="/${n.href}"${n.key === active ? ' class="active" aria-current="page"' : ""}>${esc(n.label)}</a></li>`
+    `<li><a href="${n.href}"${n.key === active ? ' class="active" aria-current="page"' : ""}>${esc(n.label)}</a></li>`
   ).join("\n        ");
 }
 
@@ -241,7 +241,9 @@ function render(file) {
   });
 
   const out = file === "index.html" ? "index.html" : file;
-  const canonicalUrl = `${site.origin}/${out === "index.html" ? "" : out}`;
+  // Cloudflare Pages serves about.html at /about and 308-redirects the .html
+  // form, so canonicals and the sitemap must use the extensionless path.
+  const canonicalUrl = `${site.origin}/${out === "index.html" ? "" : out.replace(/\.html$/, "")}`;
   meta.canonicalUrl = canonicalUrl;
 
   const ogImageSlug = meta.ogImage || "bridge-construction";
@@ -273,7 +275,7 @@ function sitemap(pages) {
   const today = new Date().toISOString().slice(0, 10);
   const priority = { "index.html": "1.0", "mining.html": "0.9", "achievements.html": "0.9" };
   const urls = pages.map((p) => {
-    const loc = `${site.origin}/${p === "index.html" ? "" : p}`;
+    const loc = `${site.origin}/${p === "index.html" ? "" : p.replace(/\.html$/, "")}`;
     return `  <url><loc>${loc}</loc><lastmod>${today}</lastmod><priority>${priority[p] || "0.8"}</priority></url>`;
   }).join("\n");
   return `<?xml version="1.0" encoding="UTF-8"?>

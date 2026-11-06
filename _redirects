@@ -1,6 +1,7 @@
-# Old pages from the Supabase-era site
-/news            /               301
-/news.html       /               301
-/news-post.html  /               301
-/admin/*         /               301
-/index.html      /               301
+# Exact rules first: Cloudflare matches in order, and splats below slow them down.
+/index.html      /         301
+/news            /         301
+/news.html       /         301
+/news-post.html  /         301
+/admin           /         301
+/admin/*         /         301
