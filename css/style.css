@@ -1367,3 +1367,22 @@ body.no-scroll { overflow: hidden; }
   .tile, .tile:hover { transition: none; transform: none; }
   html { scroll-behavior: auto; }
 }
+
+/* ---- leadership portrait (replaces the initials circle when a photo exists) ---- */
+.leader-photo {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--border);
+  background: var(--surface-2);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .35);
+}
+.leader-photo picture,
+.leader-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

@@ -153,7 +153,12 @@ function clientList() {
 function leadershipGrid() {
   return site.leadership.map((l) =>
     `<div class="leader reveal">
-      <div class="leader-avatar" aria-hidden="true">${esc(l.initials)}</div>
+      ${l.photo
+        ? `<div class="leader-photo">${picture(l.photo, {
+            sizes: "180px",
+            alt: `${l.name}, ${l.role}, Blue-Ray (SL) Ltd.`,
+          })}</div>`
+        : `<div class="leader-avatar" aria-hidden="true">${esc(l.initials)}</div>`}
       <div class="leader-name">${esc(l.name)}</div>
       <div class="leader-role">${esc(l.role)}</div>
       <div class="leader-contact">
@@ -189,8 +194,8 @@ function jsonLd(meta) {
       addressLocality: c.city,
       addressCountry: c.country,
     },
-    telephone: [c.phonePrimary, c.phoneSecondary],
-    email: c.emailPrimary,
+    telephone: c.phonePrimary,
+    email: [c.emailPrimary, c.emailGmail].filter(Boolean),
     areaServed: ["Sierra Leone", "West Africa"],
     knowsAbout: ["Road construction", "Bridge construction", "Bauxite mining",
       "Gold mining", "Diamond mining", "Heavy mineral sands", "Coltan", "Sand mining"],

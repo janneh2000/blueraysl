@@ -12,16 +12,16 @@
     "city": "Freetown",
     "country": "SL",
     "countryName": "Sierra Leone",
-    "phonePrimary": "+232-78-746182",
-    "phoneSecondary": "+232-88-746182",
-    "whatsapp": "23278746182",
+    "phonePrimary": "+232-73-888880",
+    "whatsapp": "23273888880",
     "emailPrimary": "info@blueraysl.com",
     "emailMd": "md@blueraysl.com",
     "emailBackup": "blueraysl.co@gmail.com",
     "hoursLine1": "Monday \u2013 Friday",
     "hoursLine2": "8:30 AM \u2013 5:30 PM (GMT)",
     "lat": "8.4855",
-    "lng": "-13.2340"
+    "lng": "-13.2340",
+    "emailGmail": "blueraysl.co@gmail.com"
   },
   "stats": [
     {
@@ -103,10 +103,11 @@
     {
       "initials": "MJ",
       "name": "Mohamed Janneh",
-      "role": "Managing Director",
+      "role": "Chief Executive Officer & Managing Director",
       "email": "md@blueraysl.com",
-      "phone": "+232-78-746182",
-      "note": "Day-to-day operations and project delivery."
+      "phone": "+232-73-888880",
+      "note": "Day-to-day operations and project delivery.",
+      "photo": "mohamed-janneh"
     }
   ]
 }

@@ -201,8 +201,8 @@
           form.innerHTML =
             '<h2>Thank you — message received.</h2>' +
             '<p class="muted">We have your details and will reply within one business day. ' +
-            'If it is urgent, call <a href="tel:+23278746182">+232-78-746182</a> ' +
-            'or <a href="https://wa.me/23278746182" target="_blank" rel="noopener noreferrer">message us on WhatsApp</a>.</p>';
+            'If it is urgent, call <a href="tel:+23273888880">+232-73-888880</a> ' +
+            'or <a href="https://wa.me/23273888880" target="_blank" rel="noopener noreferrer">message us on WhatsApp</a>.</p>';
           form.scrollIntoView({ behavior: 'smooth', block: 'center' });
           return;
         }

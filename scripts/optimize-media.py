@@ -46,12 +46,19 @@ def run(cmd):
     return r.stdout
 
 
-def load_image(path, crop=None):
-    """Open, apply EXIF orientation, strip metadata, optionally crop top/bottom."""
+def load_image(path, crop=None, box=None):
+    """Open, apply EXIF orientation, strip metadata, optionally crop.
+
+    crop = [top, bottom] as fractions of height, for trimming screenshot chrome.
+    box  = [left, top, right, bottom] in source pixels, for a deliberate framing
+           such as a square portrait crop.
+    """
     im = Image.open(path)
     im = ImageOps.exif_transpose(im)
     im = im.convert("RGB")
-    if crop:
+    if box:
+        im = im.crop(tuple(box))
+    elif crop:
         top, bottom = crop
         h = im.height
         im = im.crop((0, int(h * top), im.width, int(h * bottom)))
@@ -60,11 +67,11 @@ def load_image(path, crop=None):
     return clean
 
 
-def emit_photo(src, slug, cat, crop=None):
+def emit_photo(src, slug, cat, crop=None, box=None):
     """Write responsive derivatives. Returns metadata for the build script."""
     outdir = OUT_IMG / cat
     outdir.mkdir(parents=True, exist_ok=True)
-    im = load_image(src, crop)
+    im = load_image(src, crop, box)
     native_w, native_h = im.size
     ratio = native_h / native_w
 
@@ -159,7 +166,8 @@ def main():
         if not src.exists():
             print(f"   MISSING {src}")
             continue
-        meta = emit_photo(src, item["slug"], item["cat"], item.get("crop"))
+        meta = emit_photo(src, item["slug"], item["cat"],
+                          item.get("crop"), item.get("box"))
         index["photos"][item["slug"]] = meta
         print(f"   {item['slug']:28} {meta['width']}x{meta['height']} {meta['orientation']}")
 
